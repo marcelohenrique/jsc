@@ -1,0 +1,59 @@
+<html>
+   <head>
+   		<title>Estilo</title>
+      <meta http-equiv="content-type" content="text/html;charset=iso8859-1" />
+      <script type="text/javascript" src="../../firebug-lite/firebug-lite.js#startOpened"></script>
+      <style>
+      	input{/* regra genérica afeta os 3 campos */
+      		border:1px black solid;
+      		background: #EEFFEE;
+      	}
+      </style>
+   </head>
+   <body>
+      <label for="nome">Nome: </label><input id="nome"/><br/>
+      <label for="endereco">Endereço: </label><input id="endereco"/><br/>
+      <label for="telefone">Telefone: </label><input id="telefone"/><br/>
+      <hr/>
+      <span id="description"></span>
+      <script type="text/javascript">
+			/* referências */
+      		var nome = document.getElementById("nome");
+			var endereco = document.getElementById("endereco");
+			var telefone = document.getElementById("telefone");
+			var dsc = document.getElementById("description");
+			/* eventos de modificação da span de descrição*/
+			nome.onfocus=function(){
+				dsc.innerHTML="nome que consta no documento oficial do cliente";
+				dsc.style.color="#FF1111";
+				
+			};
+			nome.onblur=function(){
+				if(nome.value === "")
+					nome.style.background="#FFFFEE";
+				else
+					nome.style.background="#EEFFEE";
+			};
+			endereco.onfocus=function(){
+				dsc.innerHTML="logradouro da residência do cliente";
+				dsc.style.fontWeight="bolder";
+			};
+			endereco.onblur=function(){
+				if(endereco.value === "")
+					endereco.style.background="#FFFFEE";
+				else
+					endereco.style.background="#EEFFEE";
+			};
+			telefone.onfocus=function(){
+				dsc.innerHTML="telefone de contato do cliente";
+				dsc.style.border="1px black groove";
+			};
+			telefone.onblur=function(){
+				if(telefone.value === "")
+					telefone.style.background="#FFFFEE";
+				else
+					telefone.style.background="#EEFFEE";
+			};
+      </script>
+   </body>
+</html>

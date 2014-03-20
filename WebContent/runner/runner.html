@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>setInterval -- TODO problemas com múltiplos cliques</title>
+<style type="text/css">
+	p{
+		float:left;
+		width:300px;
+		border-width:1px;
+		border-style:groove;
+		margin: 5px;
+	}
+</style>
+		<script type="text/javascript" src="../firebug-lite/firebug-lite.js#startOpened"></script>
+</head>
+<body>
+	<a href="../index.html">Voltar</a>
+	<div>
+		<p>Contagem: <span id="t3">0</span></p>
+		<p id="tst"></p>
+		<p id="ts2"></p>
+		<button id="b1">Iniciar</button>
+		<button id="b2">Parar</button>
+	</div>
+	<script type="text/javascript">
+	
+		var i = 0;
+		var txt1 = ["na segunda maria foi pro bar",
+		   		"na terça maria foi pra praça",
+		   		"na quarta maria foi pra roça",
+		   		"na quinta maria foi pro lago",
+		   		"na sexta maria foi pra igreja",
+		   		"no sábado maria foi pra festa",
+		   		"no domingo maria parou de beber"];
+   		var p1 = document.getElementById("tst");
+   		function f1(){
+   			p1.innerHTML+=txt1[(i++ % 7)]+"<br/>"
+   		}
+   		var r1;
+
+   	   	var j = 0;
+   	   	var txt2 = "esta frase irá se repetir ";	   	
+   		var p2 = document.getElementById("ts2");
+   		function f2(){
+			p2.innerHTML+=txt2.charAt(j++);
+			if(j==txt2.length)
+				j=0;
+   	   	}
+   		var r2;
+
+   	   	var k = 0
+   		var p3 = document.getElementById("t3");
+   	 	function f3(){
+			p3.innerHTML=++k;
+	   	}
+   	 	var r3;
+
+   	   	var b1 = document.getElementById("b1");
+   	   	b1.onclick=function(){
+			r1 = setInterval(f1,3000);
+			r2 = setInterval(f2,60);
+			r3 = setInterval(f3,1000);
+   	   	};  
+
+   	   	var b2 = document.getElementById("b2");
+   	   	b2.onclick=function(){
+			clearInterval(r1);
+			clearInterval(r2);
+			clearInterval(r3);
+   	   	};  	   	
+	</script>
+</body>
+</html>

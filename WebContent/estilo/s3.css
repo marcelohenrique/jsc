@@ -1,0 +1,8 @@
+.modulo{
+	border:1px black double;
+	background:#EEEEFF;
+	width:700px;
+}
+.modulo>.item{
+	float:left;width:300px;
+}

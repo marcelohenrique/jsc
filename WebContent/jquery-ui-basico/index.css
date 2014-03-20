@@ -1,0 +1,23 @@
+.item {
+	display : inline;
+	width:28%;
+	margin: 5px;
+	padding: 5px;
+	float:left;
+}
+.item label{
+	display:block;
+}
+.item input{
+	width:100%;
+}
+#dlg{
+	width:640px;
+	height:480px;
+}
+#dlg table{
+	clear:left;
+	width:100%;
+}
+#dlg tbody{
+}

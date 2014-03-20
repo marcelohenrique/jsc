@@ -1,0 +1,30 @@
+#wizard {
+	top: 0px;
+	left: 0px;
+	position: absolute;
+	border: 0px;
+	width: 416px;
+	height: 312px;
+}
+
+#progress {
+	top: 313px;
+	left: 0px;
+	position: absolute;
+	background-color: rgb(255, 0, 0);
+	width: 20px;
+	height: 20px;
+}
+
+#results {
+	position: absolute;
+	top: 30px;
+	left: 30px;
+	visibility: hidden;
+	width: 300px;
+}
+
+fieldset,legend {
+	background: white;
+	border: 1px groove black;
+}

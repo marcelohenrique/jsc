@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<title>testes com lista</title>
+		<script type="text/javascript" src="../firebug-lite/firebug-lite.js#startOpened"></script>
+		</head>
+	<body>
+		<a href="../index.html">Voltar</a><hr/>
+		<p>abaixo como fazer com listas em javascript e seus equivalentes em java</p>
+		<script type="text/javascript">
+			var list = [ 1, 2, 3, 4, 5, 6 ];
+			document.write("lista:<br/>["+list+"]<br/>");
+			list.push(7);
+			document.write("lista.push(7) | lista.add(7):<br/>["+list+"]<br/>");
+			list.splice(1, 1);
+			document.write("lista.splice(1,1) | lista.remove(1):<br/>["+list+"]<br/>");
+			list.splice(2,0,4);
+			document.write("lista.splice(2,0,4) | lista.add(2,4):<br/>["+list+"]<br/>");
+		</script>
+		<hr/>
+		<p>Algumas coisas dão mais trabalho...</p>
+		<script type="text/javascript">
+			var x = {nome:"fulano de tal 1"};
+			var y = {nome:"fulano de tal 2"};
+			var z = {nome:"fulano de tal 3"};
+			var w = {nome:"fulano de tal 4"};
+			var list2 = [x,y,z,w];
+			document.write("x:<br/>{nome:'fulano de tal 1'}<br/>");
+			document.write("y:<br/>{nome:'fulano de tal 2'}<br/>");
+			document.write("z:<br/>{nome:'fulano de tal 3'}<br/>");
+			document.write("w:<br/>{nome:'fulano de tal 4'}<br/>");
+			document.write("lista:<br/>[x,y,z,w]<br/>");
+			document.write("remover z (java):<br/>");
+			document.write("lista.remove(z)");
+			document.write("<br/>remover z (javascript):<br/>");
+			document.write("for(var i = 0; i < lista.length; i++)if(lista[i] == z)lista.splice(i,1);");
+		</script>
+	</body>
+</html>

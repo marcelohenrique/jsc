@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<title>DIV's ocultas</title>
+	</head>
+	<body>
+		<div>
+			<fieldset>
+				<legend>Dados segurado</legend>
+				<label for="nme">Nome</label><input id="nme"/><br/>
+				<label for="end">Endereço</label><input id="end"/><br/>
+				<label for="tel">Telefone</label><input id="tel"/><br/>
+				<button id="more1">Mais</button>
+			</fieldset>
+		</div>
+		<div id="b" style="display:none;">
+			<fieldset>
+				<legend>Dados do veículo</legend> 
+				<label for="mar">Marca</label><input id="mar"/><br/>
+				<label for="vei">Veículo</label><input id="vei"/><br/>
+				<label for="ano">Ano</label><input id="ano"/><br/>
+				<button id="enviar">OK!</button>
+			</fieldset>
+		</div>
+		<script type="text/javascript">
+			var div = document.getElementById("b");
+			
+			var b1 = document.getElementById("more1");
+			var b2 = document.getElementById("enviar");
+			
+			b1.onclick=function(){
+				div.style.display="block";
+			};
+			b2.onclick=function(){
+				div.style.display="none";
+			};
+		</script>
+	</body>
+</html>

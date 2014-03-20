@@ -1,0 +1,37 @@
+/* */
+.modulo {
+	position: absolute;
+	width: 640px;
+	border: dashed 1px black;
+	top:50px;
+	left:30%;
+}
+
+.abaHead{
+	float:left;
+	border: 2px inset;
+	border-bottom: none;
+}
+
+.aba{
+	clear:left;
+	border: 2px groove;
+}
+
+.item{
+	float:left;
+	width:28%;
+	border: 2px groove;
+	margin: 1%;
+	padding: 1%;
+}
+
+.item > *{
+	width:95%;
+}
+
+.retorno {
+	position:absolute;
+	top:0px;
+	left:0px;
+}

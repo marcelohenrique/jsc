@@ -1,0 +1,11 @@
+input{
+	width:100%;
+}
+.modulo{
+	border:1px black ridge;
+	background:#FFEEEE;
+	width:340px;
+}
+.modulo>.item{
+	float:left;width:300px;
+}

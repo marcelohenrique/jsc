@@ -1,0 +1,20 @@
+
+
+button{
+	margin: 3px 3px 3px 3px;
+}
+
+.tabela {
+	width:100%;
+}
+
+.tabela tr {	
+	background-color: green;
+}
+
+.tabela th{
+	background-color: white;
+}
+.tabela .cinza{
+	background-color: gray;
+}

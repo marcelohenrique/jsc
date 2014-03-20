@@ -1,0 +1,35 @@
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html;charset=iso8859-1" />
+		<script type="text/javascript" src="../../firebug-lite/firebug-lite.js#startOpened"></script>
+	</head>
+	<body>
+		<input id="a" value="campo a"/>
+		 <script type="text/javascript">
+	         var a = document.getElementById("a");
+	         console.debug("tag1, elemento a: "+(a ? a.value : "null/undefined"));
+	         var b = document.getElementById("b");
+	         console.debug("tag1, elemento b: "+(b ? b.value : "null/undefined"));
+	         var c = document.getElementById("c");
+	         console.debug("tag1, elemento c: "+(c ? c.value : "null/undefined"));
+	         console.debug(" ");
+      	</script>
+		<input id="b" value="campo b"/>
+		 <script type="text/javascript">
+	         console.debug("tag2, elemento a: "+(a ? a.value : "null/undefined"));
+	         b = document.getElementById("b");
+	         console.debug("tag2, elemento b: "+(b ? b.value : "null/undefined"));
+	         c = document.getElementById("c");
+	         console.debug("tag2, elemento c: "+(c ? c.value : "null/undefined"));
+	         console.debug(" ");
+      	</script>
+		<input id="c" value="campo c"/>
+		 <script type="text/javascript">
+	         console.debug("tag3, elemento a: "+(a ? a.value : "null/undefined"));
+	         console.debug("tag3, elemento b: "+(b ? b.value : "null/undefined"));
+	         c = document.getElementById("c");
+	         console.debug("tag3, elemento c: "+(c ? c.value : "null/undefined"));
+	         console.debug(" ");
+      	</script>
+	</body>
+</html>

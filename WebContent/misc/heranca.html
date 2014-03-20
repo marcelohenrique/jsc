@@ -1,0 +1,88 @@
+
+<script type="text/javascript" src="../firebug-lite/firebug-lite.js#startOpened"></script>
+<a href="index.html">Voltar</a>
+<h1>Este exemplo só tem script. Veja o código fonte</h1>
+<script type="text/javascript">
+	/*
+		helper para evitarmos erros se o firebug estiver desligado
+	 */
+	if (typeof console == "undefined") {
+		console = {
+			debug : function(msg) {
+				alert(":DEBUG:\n" + msg);
+			}
+		};
+	}
+
+	/* classe 1. dei um nome qualquer. ela possui 2 comportamentos */
+	function Amigo(nme) {
+
+		console.debug("nome do amigo: " + nme);
+
+		this.buuu = function() {
+			alert("surpresaaa!!!");
+		}
+
+		this.digaOi = function() {
+			alert("Ahaaa! eu sou o " + nme + "!!!");
+		}
+	}
+
+	/* classe 2 do exemplo, possui apenas 1 comportamento*/
+	function Pessoa(nome, cpf) {
+		console.debug("nome: " + nome + "\ncpf: " + cpf);
+
+		this.digaCpf = function() {
+			alert("meu cpf � " + cpf + "!!!");
+		}
+	}
+
+	/* classe 3 do exemplo: apenas 'herdamos' os comportamentos das outras duas. */
+	function PessoaFisica(nome, endereco, cpf) {
+		Pessoa.call(this, nome, cpf);
+		Amigo.call(this, nome);
+	}
+	
+	//classe que usa corre��o de escopo para colocar as fun��es no escopo do par�metro.
+	function XXX(dados) {
+		with (dados) {
+			dados.foo = function() {
+				return x + y;
+			};
+		}
+		return dados;
+	}
+
+	//sem o corretor de escopo...
+	function YYY(param) {
+		this.param = param;
+		this.foo = function() {
+			return param.x + param.y;
+		};
+	}
+	/* instanciando e testando*/
+	var p = new PessoaFisica("fulano", "rua tal", "12345678");
+	//p.buuu();
+	//p.digaOi();
+	//p.digaCpf();
+
+	//nota��o m�gica com o objeto literal
+	var k = new XXX( {
+		x : 10,
+		y : 10
+	});
+
+	var h = new YYY( {
+		x : 15,
+		y : 15
+	});
+
+	console.debug(k.foo());
+	console.debug(k.x);
+	console.debug(h.foo());
+	console.debug(h.param.y);
+
+	console.debug(typeof p);
+	console.debug(typeof k);
+	console.debug(typeof h);
+</script>

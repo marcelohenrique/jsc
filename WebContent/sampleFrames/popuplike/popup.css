@@ -1,0 +1,11 @@
+table{
+	width:100%;
+}
+#search{
+	width:70%;
+}
+#ok{
+	position:absolute;
+	bottom:5px;
+	right:5px;
+}

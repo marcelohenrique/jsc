@@ -1,0 +1,15 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<script type="text/javascript" src="../firebug-lite/firebug-lite.js#startOpened"></script>
+		<title>Campos que poderiam ter vindos do banco - o retorno</title>
+		<script type="text/javascript" src="../mascaras.js"></script>
+	</head>
+	<body>
+		<a href="index.html">Voltar</a><hr/>
+		<label for="telefone">Telefone:</label><input id="telefone" onfocus="if(!this.mascara)new TelefoneMask(this)"/><br />
+		<label for="cpf">CPF:</label><input id="cpf" onfocus="if(!this.mascara)new CpfMask(this)"/><br />
+		<label for="cnpj">CNPJ:</label><input id="cnpj" onfocus="if(!this.mascara)new CnpjMask(this)"/><br />
+	</body>
+</html>

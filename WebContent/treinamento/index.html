@@ -1,0 +1,2101 @@
+<!DOCTYPE meta PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html;charset=iso8859-1" />
+		<style type="text/css">
+			.cod{
+				color:#7F0055;
+			}
+			.neg,.warn,.cod{
+				font-weight: bolder;
+			}
+			.it{
+				font-style: italic;
+			}
+			.sml{
+				font-size: x-small;
+			}
+			.warn{
+				color:red;
+			}
+		</style>
+		<!-- firebug lite com debug ativado (rodar pequenos snippets) -->
+		<script type="text/javascript" src="../firebug-lite/firebug-lite.js#startOpened"></script>
+		<!-- destaque de cores dos exemplos -->
+		<link rel="stylesheet" href="../syntaxhigligter/shThemeEclipse.css"/>
+		<link rel="stylesheet" href="../syntaxhigligter/shCoreEclipse.css"/>
+		<link rel="stylesheet" href="../syntaxhigligter/shCore.css"/>
+		<script type="text/javascript" src="../syntaxhigligter/shCore.js"></script>
+		<script type="text/javascript" src="../syntaxhigligter/shBrushJScript.js"></script>
+		<script type="text/javascript" src="../syntaxhigligter/shBrushXml.js"></script>
+		<script type="text/javascript">SyntaxHighlighter.all();</script>
+	</head>
+	<body>
+<h1 id="ref-titulo-introducao">Introdução</h1>
+<p>Venho per meio desta apresentar a todos vocês um javascript há muito
+propagandeado, poucas vezes visto, de qualidade superior e capaz de resolver
+problemas complexos com extrema elegância e efeciência.</p>
+<p>O compêndio do que vai ser mostrado aqui é apelidado carinhosamente de "USIX
+Javascript Coding Standard". É um presente pra vocês.</p>
+<p class="it sml">Enjói.</p>
+<h2>Índice</h2>
+<p>Os tópicos aqui presentes irão abordar o seguinte:</p>
+<ol>
+	<li><a href="#ref-titulo-introducao">Introdução</a></li>
+	<li><a href="#ref-titulo-hello-world-revisitado">"Hello World" revisitado</a></li>
+	<li><a href="#ref-titulo-tipos-primitivos">Tipos primitivos</a></li>
+	<li><a href="#ref-titulo-classes-heranca-polimorfismo">Classes, Herança e Polimorfismo</a></li>
+	<li><a href="#ref-titulo-colecoes">Coleções</a></li>
+	<li><a href="#ref-titulo-estrategias-carregamento-script">Estratégias de carregamento de script</a></li>
+	<li><a href="#ref-titulo-gui-eventos">Gui e eventos</a></li>
+	<li><a href="#ref-titulo-referencias">Referências</a></li>
+	<li><a href="#ap1">Apêndice I - miniguia para a equipe de análise</a></li>
+	<li><a href="#ap2">Apêndice II - Exercício</a></li>
+</ol>
+<h2>Motivação </h2>
+<h3>Crescimento Profissional</h3>
+<p>Não pense que você irá programar em java/C#/Delphi/Clipper para sempre. É
+necessário sempre se reciclar, não somente aprendendo paradigmas novos, mas
+reaplicando o que você já sabe em novas plataformas.</p>
+<p>As técnicas de programação não pertencem à linguagem X, Y ou Z; elas
+pertencem a VOCÊ.</p>
+<p>Se você ACHA que não sabe, fatalmente a empresa irá contratar alguém que ACHA
+que sabe, e talvez esse alguém cresca mais rápido que você.</p>
+<p>Recheie o seu currículo com tecnologias de amplo espectro.</p>
+<!-- p>Aprenda ou vá pro Olho da Rua. </p -->
+<h3>Simplificando o workflow das aplicações </h3>
+<p>Muitos fluxos e orquestrações hoje feitas no servidor podem ser levadas para
+o lado do cliente com amplos benefícios. Não há razão plausível para verificar
+se os campos da tela estão vazios no lado do servidor, não na Era da Web 2.0</p>
+<h1 id="ref-titulo-hello-world-revisitado">"Hello World" revisitado</h1>
+<p><span class="it">"Faça mais Hello Worlds"</span>-<sub>97
+things every programmer should know</sub>.</p>
+<p>A primeira coisa importante sobre um Hello World é que ele é seu primeiro
+teste. Pense que escrever estes pequenos executáveis trata-se da escrita de
+pequenos testes. Depois do primeiro, lembre-se de escrever outro e outro, e mais
+ outro, sempre que precisar testar algo pontual. Mas para melhor compreender o
+que é de tafo um Hello World, como identificar um, temos que compreender dois
+aspectos muito importantes de um código dessa natureza.</p>
+<h3>Ponto de Entrada</h3>
+<p>O ponto de Entrada, Entry Point ou Play é onde seu programa começa. Vamos
+tomar o javascript como foco daqui em diante: </p>
+<pre><a href="exemplos/hello1.html">hello1.html</a></pre>
+<pre class="brush: xml;">
+	&lt;script&gt;
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;document.write("hello!")
+	&lt;/script&gt;
+</pre>
+<p>Neste primeiro exemplo o ponto de entrada é o carregamento da página.
+Poderíamos reescrever ele para ser mais feio e ter mais linhas e ficar assim:</p>
+	<pre><a href="exemplos/hello2.html">hello2.html</a></pre>
+	<pre class="brush: xml;">
+		&lt;html&gt;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;head&gt;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;script&gt;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function load(){
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;document.write("hello!")
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/script&gt;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/head&gt;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;body onload="load()"&gt;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/body&gt;
+		&lt;/html&gt;
+	</pre>
+<p>Mais ainda, poderíamos separar ele do documento:</p>
+	<pre><a href="exemplos/hello3.html">hello3.html</a></pre>
+	<pre class="brush: xml;">
+		&lt;html&gt;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;head&gt;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;script src="hello3.js"&gt;&lt;/script&gt;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/head&gt;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;body onload="load()"&gt;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/body&gt;
+		&lt;/html&gt;
+	</pre>
+	<pre>hello3.js</pre>
+	<pre class="brush: js;">
+		function load(){
+			document.write("hello!");
+		}
+	</pre>
+<p>Nem todo Hello World tem que ser bonito, mas é importante saber como ele
+começa e como ele acaba. Os três exemplos fazem o mesmo trabalho, ocorre que um
+é mais direto ao passo que outro poderá te permitir se concentrar no que vai ser
+ testado em javascript.</p>
+<p>No caso do javascript, nem sempre o carregamento do documento é o ponto de
+entrada da aplicação. Não, sério, tem aplicações cuja fragmentação é tão grande
+que cada evento de click carrega novamente tudo o que vai ser usado, por exemplo
+, em outro evento, um onchange qualquer, digamos.</p>
+<h3>Os argumentos de função</h3>
+<p>Argumentos de função em javascrip são ponto delicado; veja, mesmo que você
+não os declare nos parênteses junto com a função, se você os passar, eles
+estarão lá.</p>
+<p>Em toda e qualquer função existe uma referência padrão que sempre apontará
+para os parâmetros da função: o <span class="it">arguments</span>.
+Esta referência é um array contendo todos os parâmetros passados para a função.
+Veja o exemplo abaixo:</p>
+<pre class="brush: js;">
+	function teste(a,b,c){
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*imprimindo através das referências declaradas*/
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.debug(a+"="+arguments[0]);
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.debug(b+"="+arguments[1]);
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.debug(c+"="+arguments[2]);
+	}
+</pre>
+<p>
+Supondo como chamada no console do firebug "teste('1',26,"teste")", a saída irá
+ser:</p>
+<pre class="brush: js;">
+1=1
+26=26
+teste=teste
+</pre>
+<p>
+Particularmente, recomendo declarar o que for ser usado, bem como estar atento à
+possibilidade do uso incorreto das funções declaradas. Se a função recebe 3
+argumentos esteja atento à possibilidade de passarem 0, 1, 2 ou 3 parâmetros.
+Claro, se você tiver domínio de onde tal função vai ser usado, não há o que se
+perocupar, ;)</p>
+<h1 id="ref-titulo-tipos-primitivos">Tipos primitivos</h1>
+<p>Os tipos primitivos do javascript não são muitos, mas nem por isso devemos
+deixar de falar sobre eles, em especial sobre os de uso mais constante. De modo
+geral, todos eles estão submetidos às mesmas condições de qualquer outro objeto
+dessa linguagem; podem ocasionalmente receber variáveis de instâncias, ter seus
+protótipos modificados em algum momento, enfim, honram a tipagem prototipal que
+veremos com muito mais detalhe mais à frente.</p>
+<h2>String</h2>
+<p>Strings são cadeias de caracteres unicode (16 bits). Em javascript elas são
+declaradas de forma parecida com o que é feito em outras linguagens de
+parentesco com o C; podemos, todavia, usar aspas simples (como em 'cotação') ou
+aspas duplas (como em "endosso") para delcarar seus literais.</p>
+<p>A concatenação se dá pelo uso do operador de soma ("nível de " + "alçada"), e
+algumas funções são similares às de outras linguagens (indexOf, lastIndexOf).</p>
+<p>As string do javascript ainda gozam de um luxo adiconal: você pode usá-las
+como arrays, se conveniente isso for. Mesmo a propriedade length está ali. Segue
+um exemplo:</p>
+<pre class="brush: js;">
+var str = "proposta nº 765412"
+for(var x=0; x&lt;str.length; x++){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.debug(str[x])
+}
+</pre>
+<p>A saída do código acima é um caractere por linha.</p>
+<p>Observe que algumas funções tem funcionamento direferente; uma das mais
+frustrantes é a replace, que não faz substituição gulosa (a versão javascript
+não observa toda a cadeia em busca de ocorrências); se for para efetuar uma
+substituição completa deve-se usar a variante que recebe uma expressão regular:</p>
+<pre class="brush: js;">
+/* imprime "endereço do segurado" */
+console.debug("endereço de cobrança".replace("de cobrança","do segurado"))
+/* substiui apenas o primeiro: "1ª cláusula, 2ª parcela, 3ª parcela" */
+console.debug("1ª parcela, 2ª parcela, 3ª parcela".replace("parcela","cláusula"))
+/* efeito esperado: "1ª cláusula, 2ª cláusula, 3ª cláusula" */
+console.debug("1ª parcela, 2ª parcela, 3ª parcela".replace(/parcela/g,"cláusula"))
+</pre>
+<p>Trataremos do construtor especial para expressões regulares mais a frente.</p>
+<h2>Number</h2>
+<p>Números podem ser inteiros ou de ponto flutuante. No caso dos números de
+ponto flutuante a implementação javascript segue a especificação "IEEE 754 -
+Binary Floating Point Arithmetic". Traduzindo em miúdos, significa que você deve
+estar preparado para episódios como este:</p>
+<pre class="brush: js;">
+/* imprime 0.7999999999999999 */
+console.debug(0.1+0.7)
+</pre>
+<p>Não é bug enquanto implementação correta do padrão, mas o é enquanto operação
+matematica do mundo real. Lembre-se sempre que o objeto number (e por
+conseguinte suas instâncias) tem o método "toFixed" para contornar tais
+inconvenientes:</p>
+<pre class="brush: js;">
+var num = 0.1+0.7;
+/* imprime 0.80 */
+console.debug(num.toFixed(2))
+</pre>
+<h3>Math</h3>
+<p>O <a href="#ref-math-moz">Math</a> não é exatamente um primitivo, mas ele é 
+útil ao lidar com números e vale muito a pena olhar a referência dele nas 
+documentações de referência.</p>
+<h4>Math.random()</h4>
+<p>Esta função do Math devolve um número de ponto flutuante cujo valor é maior
+que zero e menor que 1.</p>
+<p>É conhecido que, dada as limitações do computador, os valores do random() são
+na verdade pseudo-aleatórios, mas servem bem para a maior parte dos problemas.</p>
+<h4>Math.PI</h4>
+<p>Este atributo, como o nome sugere, é o PI, a constante encontrada nas 
+circunferências.</p>
+<h4>Math.sin(), Math.cos(), Math.tan()</h4>
+<p>Estas funções são as três funções trigonométricas básicas: seno, cosseno e 
+tangente. Veja outras na referência completa.</p>
+<pre class="brush: js;">
+console.debug(Math.sin(Math.PI/2));/* 90 graus, 1 */
+console.debug(Math.cos(Math.PI));/* 180 graus, -1 */
+</pre>
+<h4>Math.ceil(), Math.floor()</h4>
+<p>ceil e floor são funções clássicas que são encontradas em várias 
+implementações distintas de bibliotecas matemáticas. Tratam-se de funções de 
+'arredondamento', ajudam a livrarmo-nos das partes fracionárias dos números. 
+Enquanto Math.ceil(9.3) resulta em 10, Math.floor(9.8) dá 9: as funções são 
+'gulosas', isto é, não levam em consideração o tamanho da parte fracionária 
+quando arredondam para cima ou para baixo.</p>
+<pre class="brush: js;">
+console.debug(Math.ceil(9.3));/* 10 */
+console.debug(Math.floor(9.8));/* 9 */
+</pre>
+<p>O Math possui várias outras funções, mas eu insisto que, caso haja interesse 
+ou necessidade, consulte os links sobre o Math na seção de referências.</p>
+<h2>Object</h2>
+<p>Em analogia ao que acontece em java, o Object é a raíz do grafo de objetos. É
+bem verdade que os tipos diferem muito, mas em todos você encontrará nos
+prototypes uma instância de Object</p>
+<p>A linguagem provê um alias para você instanciar objetos:</p>
+<pre class="brush: js;">
+/* básico */
+var obj = new Object();
+/* alternativo -- e mais prático */
+var obj2 = {}
+</pre>
+<p>Ambos irão criar um novo objeto; a principal diferença é na forma de inferir
+valores para atributos:</p>
+<pre class="brush: js;">
+/* básico */
+var obj = new Object();
+obj.nome="fulano de tal";
+obj.idade=19;
+/* alternativo -- e mais prático */
+var obj2 = {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nome:"beltrano de tal",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;idade:25
+}
+</pre>
+<p>Embora pouco usual (Em java não dá pra fazer assim) e o uso de certos
+frameworks javascript quebrem essa feature, você pode iterar as propriedades de
+um objeto usando um for:</p>
+<pre class="brush: js;">
+var obj2 = {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nome:"beltrano de tal",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;idade:25
+};
+for(var x in obj2){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.debug(x+" : "+obj2[x]);
+}
+</pre>
+<p>O operador 'in' será discutido depois, mais a frente. Observe que, no fim,
+objetos em javascript são pouco mais do que mapas (HashMap do java, Dicionary do
+python...) com direitos especiais, ;)</p>
+<h3>Uso do maligno 'with' (corretor de escopo)</h3>
+<p>O with não tem equivalente no java. trata-se de um corretor de escopo, ou 
+seja, troca o objeto atual pelo objeto argumento do with. Observe:</p>
+<pre class="brush: js;">
+var x = {
+&nbsp;&nbsp;&nbsp;a:2,
+&nbsp;&nbsp;&nbsp;b:"noite",
+&nbsp;&nbsp;&nbsp;c:false
+};
+with(x){
+&nbsp;&nbsp;&nbsp;a = 3;
+&nbsp;&nbsp;&nbsp;c = true;
+};
+console.debug(x.a);
+</pre>
+<p>Ele deve ser evitado (mas não proibido) porque usando ele podemos ter 
+problemas de escopo muito facilmente; basta um nome de atributo repetido e não
+será mais tão claro de onde é aquele valor, se é realmente um atributo do objeto
+do escopo ou se é uma variável localizada em algum dos escopos visíveis.</p>
+<h2>Array</h2>
+<p>O Array é indexado a partir do zero e tem a propriedade "length" para
+sabermos o tamanho. Para acessarmos os elementos usamos a notação de array
+similar à do java e do C, usando colchetes. O objeto Array é outro que goza de
+alias especial para instanciá-los.</p>
+<pre class="brush: js;">
+/* criando um array */
+var lista = new Array();
+/* construtor alternativo */
+var lista2 = [];
+</pre>
+<p>Mais adiante teremos um tópico inteiro sobre coleções.</p>
+<h2>Function</h2>
+<p>Este objeto é pouco usado, mas basicamente ele permite executar código
+de forma levemente similar ao eval(), que trataremos mais a frente.</p>
+<p>Por não executar imediatamente e criar escopo para o código a executar, 
+podemos usar o function para criar funções e usa-las no momento e contexto correto.</p>
+<pre class="brush: js;">
+/* exemplo como visto na documentação mozilla e microsoft */
+var add = new Function("x", "y", "return(x+y)");
+console.debug(add(2, 3));
+</pre>
+<h2>RegExp</h2>
+<p>O objeto de <a href="#ref-regex">expressão regular</a> é um pouco mais que 
+apenas mais um tipo: ele é porta para toda uma linguagem "nova", uma DSL para 
+ser mais exato, totalmente dedicada a processar textos de forma otimizada.</p>
+<p>Suas habilidades de tratamento de String medem-se antes e depois do domínio
+do uso de Expressões Regulares.</p>
+<p>Em javascript, você pode declarar uma expressão regular da seguinte maneira:</p>
+<pre class="brush: js;">
+/* o exemplo abaixo irá encontrar números, em uma busca global ("g") */
+var expressao = new RegExp("[0-9]","g");
+var x = "a1b2c3d4";
+console.debug(x);
+/* abaixo usamos a expressão para a busca e trocamos os resultados pela string vazia */
+x = x.replace(expressao,"");
+/* exibe abcd */
+console.debug(x);
+</pre>
+<p>Assim como a String, o Object e o Array, o RegExp tem uma doçura de sintaxe, 
+um literal especial suportado pela linguagem que permite a declaração mais 
+eficiente de uma expressão regular:</p>
+<pre class="brush: js;">
+/* o mesmo que antes, agora usando o construtor especial */
+var expressao = /[0-9]/g;
+var x = "a1b2c34";
+/* abaixo usamos a expressão para a busca e trocamos os resultados pela string vazia */
+x = x.replace(expressao,"");
+/* exibe abcd */
+console.debug(x);
+</pre>
+<p>Note que o RegExp é ponte para toda uma outra linguagem; O mínimo que você 
+deve dominar de Expressões Regulares é o uso de grupos bem como capturar 
+alfanuméricos e usar os quantificadores de forma eficiente: 
+</p>
+<pre class="brush: js;">
+/* remover letras minúsculas */
+console.debug("asdf4567".replace(/[a-z]/g,""));
+
+/* parecido com o anterior, mas pegando apenas os números contínuos */
+console.debug("asdf4567".replace(/([a-z]*)([0-9]+)/,"$2"));
+
+/* remover tudo que não é número, usando alias herdado do perl */
+console.debug("asdf4567".replace(/\D/g,""));
+
+/* capturar não-números e números, manter apenas os números */
+console.debug("asdf4567".replace(/(\D+)(\d+)/,"$2"));
+
+/* didático, capturando duas posições numéricas de um texto conhecido e adicionando informação */
+console.debug("garanto que maria tem 17 anos de profissão".replace(/(\d{2})/,"mais de $1"))
+
+/* trabalhando com uma data formatada, escapando as barras da data */
+console.debug("12/10/1984".replace(/(\d+)\/(\d+)\/(\d+)/,"ano: $3; mês: $2; dia: $1"));
+
+/* wildcards para cobrir tudo exceto o detalhe importante */
+console.debug("era uma vez em uma terra encantada uma moça com vestido".replace(/(.*)( uma moça com vestido)/,"$1 um integrante do KISS"));
+</pre>
+<p>Recomendo fortemente ler em outro momento mais a fundo sobre Expressões 
+Regulares, mas compreender como capturar letra, não-letra, número, não-número, 
+como usar os parênteses para trocar nas variáveis de substituição da string de
+saída, quantificadores já vai lhe permitir produzir expressões muito eficientes
+na hora de validar campos de formulário.</p>
+<h2>Boolean</h2>
+<p>Deste objeto aqui, basta saber que se você passar no construtor dele qualquer 
+coisa diferente de null,0 ou undefined, ele irá ter valor true. É mais legal 
+usar o true ou false literal diretamente.
+interessante
+</p>
+<h2>Date</h2>
+<p>O date do javascript honra a seção 5 da <a href="#ref-date-3">RFC 822</a>, o 
+que é bom porque se você procurar na internet como tratar a string que este 
+objeto pode gerar irá encontrar muitos exemplos.</p>
+<p>Uso geral:</p>
+<pre class="brush: js;">
+var x = new Date();
+/* imprimirá a data atual neste formato: Sun Sep 05 2010 15:51:08 GMT-0300 (BRT) */
+console.debug(x)
+/* data específica: */
+var y = new Date(1984,9,27);
+console.debug(y);/* Tue Nov 27 1984 00:00:00 GMT-0300 (BRT) */
+/* sabendo os milisegundos desta data: */
+console.debug(y.getTime())/* 467694000000 */
+/* construindo a data a partir de uma string: */
+console.debug(new Date("Sun Sep 05 2010"));/* Sun Sep 05 2010 00:00:00 GMT-0300 (BRT) */
+/* novamente, passando menos informação ainda. este parece ser o set mínimo */
+console.debug(new Date("Dec 25 2010"));
+/* dias da semana, 0 - 6, domingo - sábado */
+console.debug(y.getDay());/* 6 */
+</pre>
+<p>Um uso inteligente para o objeto date é usa-lo como modelo de dados para 
+um campo de data.</p>
+<p>Não esqueçam, como já é sabido, que o mês de janeiro é o de número zero e 
+dezembro é 11; isto irá lhe poupar juízos, basta não esquecer.</p>
+<p>O dia do mês você consegue com getDate(), e não getDay() (que devolve o dia 
+da semana).</p>
+<p>Para uma referência completa dos métodos de recuperação e juste de mês e de 
+ano veja as referências do ojbeto Date ao final do tutorial.</p>
+<h1 id="ref-titulo-classes-heranca-polimorfismo">Classes, herança e polimorfismo</h1>
+<p>Bem-vindos à diversão! Antes de prosseguirmos, algumas coisas devem ficar 
+bem claras aqui: Javascript não é uma linguagem Orientada a Objetos. Ela é 
+meramente Baseada em Objetos. Para fazer melhor uso do javascript você deveria 
+conhecer os fundamentos da <a href="#ref-closure">programação funcional</a>, mas
+este treinamento é planejado para reaproveitar os conhecimentos que você já tem 
+em java.</p>
+<p>Independente do uso ótimo ou não, a linguagem é muito flexível, podendo 
+facilmente simular funcionalidades de outras linguagens; o Javascript permite
+isso. Dentre as várias abordagens de modelagem sistêmica em javascript, usaremos 
+aqui uma que já foi debatida e apresentada por Douglas Crockford: emulação de 
+classes.</p>
+<h2>Emulação de classes via closures</h2>
+<p>Não há, na versão em uso da <a href="#ref-ecma-262">especificação do 
+javascript</a> (ECMA-262, 3ª edição) literações ou suporte por parte da 
+linguagem para a definição de classes, seja esta definição ao estilo do que é 
+visto no java, ou no estilo usado no C++, ou em qualquer outra linguagem com 
+tipagem e definição estática em classes. O máximo que você terá é o objeto de 
+protótipo, isto é, herança por protótipo.</p>
+<p>De fato, predefinir o tipo que é recebido por parâmetro com checagens em 
+tempo de compilação é um luxo inexistente no javascript.</p>
+<p>Temos, todavia, o suporte a closures, uma vez que funções são residentes de 
+primeira classe - podendo ser parâmetros, como um outro valor qualquer - e seus 
+contextos são prontamente preservados ao serem referenciados em outro bloco.</p>
+<p>A emulação de classe se dá através das definições de função aninhadas dentro
+de outra função; assim o contexto da função externa é copiado para as definições 
+internas de modo que o valor do contexto se preserva através das chamadas. Mais 
+ainda, em Javascript, funções são atributos de primeira classe, passíveis de 
+operações diversas, instanciação, por exemplo.</p>
+<p>As funções internas fazem o papel dos métodos, e são declaradas como membros
+do <span class="cod">this</span>; isto serve para
+garantirmos que, se corretamente instanciada, estas funções estejam submetidas 
+ao escopo do objeto criado.</p>
+<p>Assim como acontece no java, a palavra reservada "this" irá se referir à 
+instância do objeto. Mas para funcionar corretamente, o programador não pode 
+esquecer de instanciar sua classe.</p>
+<p>Sem mais delongas, vamos ao exemplo clássico. Vamos definir a classe Carro:</p>
+<pre class="brush: js;">
+function Carro(){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.businar=function(){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.debug("bi bi!!!");
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};
+}
+</pre>
+<p>Sem surpresas, não há uma palavra reservada "class". Há o reuso um tanto 
+forçoso do termo reservado "function"; temos ainda um método público, o método 
+businar. Novamente, para que ele se comporte corretamente como um método nós o
+declaramos como um atributo do objeto "this". Para criar um objeto deste "tipo", 
+faríamos o seguinte:</p>
+<pre class="brush: js;">
+var gol = new Carro();
+gol.businar();/* bi bi!!! */
+</pre>
+<p>Observe que o método outrora declarado sob o "this" é agora acessível pela
+referência da instância. É assim que nossos métodos irão funcionar, e aqui a 
+sensação de familiaridade retorna.</p>
+<p>Embora elegante, esta estrutura é deveras frágil. Melhor dizendo, é 
+extremamente dinâmica, deveras flexível: a operação a seguir é totalmente 
+válida, mas substitui o método público por um atributo público:</p>
+<pre class="brush: js;">
+var fusca = new Carro();
+fusca.businar="quebrado";
+funca.businar();/* ERRO!!! */
+</pre>
+<p>Uma vez que a definição do tipo não é estática, você pode alterar 
+praticamente todas as características públicas da instância. Obvio que isto não
+irá ocorrer o tempo todo, pois ao usar um objeto você deveria entender que 
+vantagens ele lhe provê e que operações são interessantes de se utilizar. O fato
+da tipagem ser frágil é detalhe e pode ser tolerado a ponto de mera educação ser
+suficiente para que erros não aconteçam.</p>
+<h2>Atributos privados </h2>
+<p>Para emular atributos privados, você deve usar variáveis locais à função que
+emula a classe:</p>
+<pre class="brush: js;">
+function Carro(){
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var modelo = "gol";
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.businar=function(){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.debug("bi bi!!!");
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};
+}
+</pre>
+<p>As variáveis locais estão no escopo da função envolvente, e tal contexto é
+copiado para as funções declaradas internamente, funcionando do memso modo que
+os atributos de classe como os conhecemos em Java:</p>
+<pre class="brush: js;">
+function Incrementador(){
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var atual = 0;
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.incrementar=function(){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;atual++;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.mostrar=function(){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.debug(atual);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};
+
+}
+/* usage */
+var inc = new Incrementador();
+inc.mostrar();/* 0 */
+inc.incrementar();
+inc.incrementar();
+inc.mostrar();/* 2 */
+console.debug(inc.atual);/* undefined */
+</pre>
+<p>Funções privadas também podem ser declaradas de maneira muito análoga, muito
+embora nos pareça forçoso e não natural:</p>
+<pre class="brush: js;">
+function Segredo(){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function contaSegredo(){/* inútil, porém didático. */
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.debug("jamais contarei!");
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+}
+var s = new Segredo();
+s.contaSegredo();/* ERRO */
+</pre>
+<h2>Atributos públicos</h2>
+<p>Em analogia ao que já vimos com os métodos, atributos públicos podem ser 
+colocados sob o <span class="cod">this</span>:</p>
+<pre class="brush: js;">
+function Contato(){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.nome="fulano";
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.endereco="rua tal";
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.telefone="12345678";
+}
+var c = new Contato();
+console.debug(c.nome);
+</pre>
+<p>Novamente, sem muita surpresa, os atributos colocados sob o "this" são 
+referenciáveis pela instância. Note que as funções públicas nos já apresentamos
+anteriormente.</p>
+<h2>Atributos 'privilegiados'</h2>
+<p>Uma coisa que é preciso que se compreenda e não se perca de foco é que o
+encapsulamento do javascript funciona de forma bem diferente do encapsulamento 
+visto no java. Relembrando, estamos usando uma das várias abordagens diferentes
+de se trabalhar com javascript para problemas de missão crítica e esta tem lá
+suas limitações no tocante a mimetizar tudo o que você já sabia de java.</p>
+<p>Trocando em miúdos, o código abaixo:</p>
+<pre class="brush: js;">
+function A(){
+
+&nbsp;&nbsp;&nbsp;this.teste1=function(){/* função pública */
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.debug("teste1");
+&nbsp;&nbsp;&nbsp;};
+
+&nbsp;&nbsp;&nbsp;this.teste2=function(){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.debug("teste2");
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;teste1();/* pode dar erro, depende do contexto da instância */
+&nbsp;&nbsp;&nbsp;};
+}
+
+var a = new A();
+a.teste1();
+a.teste2();/* ERRO! */
+</pre>
+<p>Não funciona.</p>
+<p>A correção é simples, quase automática se você ajustar para o seguinte:</p>
+<pre class="brush: js;">
+function A(){
+
+&nbsp;&nbsp;&nbsp;this.teste1=function(){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.debug("teste1");
+&nbsp;&nbsp;&nbsp;};
+
+&nbsp;&nbsp;&nbsp;this.teste2=function(){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.debug("teste2");
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.teste1();/* nome exato da função declarada */
+&nbsp;&nbsp;&nbsp;};
+}
+
+var a = new A();
+a.teste1();
+a.teste2();/* OK */
+</pre>
+<p>Um outro cenário de erro é quando temos uma função originalmente privada e 
+desejamos que ela <span class="neg">também</span> seja pública:</p>
+<pre class="brush: js;">
+fucntion X(){
+&nbsp;&nbsp;&nbsp;function secret(){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.debug("segredo");
+&nbsp;&nbsp;&nbsp;};
+&nbsp;&nbsp;&nbsp;this.fofoca=secret;/* publicando a função */
+}
+var x = new X();
+x.fofoca();/* OK */
+</pre>
+<p>No final deve-se ter o cuidado de dar o nome correto das coisas, e tentar 
+usar o javascript tal como se usava no java mas sem esquecer jamais que são 
+linguagens totalmente distintas.</p>
+<h2>Trabalhando com referências</h2>
+<p>Referências no javascript funcionarão de forma similar ao que é visto no 
+java. Apenas os literais especiais e/ou o uso do new é que tem poder pra criar 
+objetos, e no mais as outras atribuições vão na realidade gerar cópias de 
+referências.</p>
+<p>Em algumas situações, dada a natureza da cópia de contexto, você terá que 
+evitar problemas com <a href="#ref-alpharenaming">Alpha Renaming</a>, coisa que
+no java é facilmente corrigido com a diferenciação entre variáveis e funções, em
+javascript é se descuidar e a linguagem trair você do pior jeito imaginável.
+Observe:</p>
+<pre class="brush: js;">
+function teste(){
+&nbsp;&nbsp;&nbsp;console.debug("teste");
+};
+function Classe(){
+&nbsp;&nbsp;&nbsp;var teste = 10;
+
+&nbsp;&nbsp;&nbsp;this.avaliar=function(){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;teste();
+&nbsp;&nbsp;&nbsp;};
+};
+var x = new Classe();
+x.avaliar();/* erro */
+</pre>
+<p>Mas apontado isso, o resto do uso de referências é o mais comum possível:</p>
+<pre class="brush: js;">
+function Q(data){
+&nbsp;&nbsp;&nbsp;this.z=data;
+}
+var a = {x:"teste",y:{w:2}};/* notação literal, como vimos anteriormente */
+var b = new Q([1,2,3]);/* notação usando um construtor */
+var c = a;
+var d = a.y;
+var e = b.z;
+console.debug(a.x); /* teste */
+console.debug(c.x); /* teste */
+a.x="outro";
+console.debug(c.x); /* outro */
+console.debug(a.y.w); /* 2 */
+d.w=["a","b"];
+console.debug(a.y.w); /* ["a","b"] */
+console.debug(b.z[1]); /* 2 */
+console.debug(e[1]); /* 2 */
+b.z[1]="X";
+console.debug(e[1]);/* X */
+</pre>
+<h2>Encadeamento de construtores</h2>
+<p>Isto é útil para simularmos herança, e a versão javascript que vou apresentar
+tem um bônus especial. Observe:</p>
+<pre class="brush: js;">
+function A(){
+&nbsp;&nbsp;&nbsp;this.azinator=function(){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.debug("aaaaaaa");
+&nbsp;&nbsp;&nbsp;}
+}
+function B(){
+&nbsp;&nbsp;&nbsp;this.bzinator=function(bbb){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.debug(bbb+" done!");
+&nbsp;&nbsp;&nbsp;}
+} 
+function C(ccc){
+&nbsp;&nbsp;&nbsp;this.czinator=function(){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.debug(ccc);
+&nbsp;&nbsp;&nbsp;}
+}
+function Herdeiro(p){
+&nbsp;&nbsp;&nbsp;A.call(this);
+&nbsp;&nbsp;&nbsp;B.call(this);
+&nbsp;&nbsp;&nbsp;C.call(this,p);
+}
+var x = new Herdeiro("teste de pseudo-herança");
+x.azinator();
+x.czinator();
+x.bzinator("tenho todos os poderes deles juntos");
+</pre>
+<p>Em vez de <span class="cod">extends</span> nós
+usamos o <span class="cod">call</span>, que é um
+<a href="#ref-funccall">método existente em todas as funções</a>. ele aplica 
+todas as operações de uma determinada função no contexto do objeto passado por
+parâmetro. Basicamente se a função a ser usada através de call recebia 3 
+parâmetros e usava internamente o this, no call passamos 4 parâmetros e o this 
+passa a apontar para o argumento adicional apontado.</p>
+<h2>Contratos/interfaces</h2>
+<p>Em javascript nós não temos contratos, interfaces como uma feature da 
+linguagem. Neste ponto, não há equivalente ao que existe no java. Mas nem por 
+isso o polimorfismo é proibido para nós, observe:</p>
+<pre class="brush: js;">
+function Impares(){
+&nbsp;&nbsp;&nbsp;this.numerais=function(){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return [1,3,5,7];	
+&nbsp;&nbsp;&nbsp;}
+}
+
+function Pares(){
+&nbsp;&nbsp;&nbsp;this.numerais=function(){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return [2,4,6,8];
+&nbsp;&nbsp;&nbsp;}
+}
+
+function Dup(){
+&nbsp;&nbsp;&nbsp;this.duplicador=function(obj){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var list = obj.numerais();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(var i in list)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;list[i]*=2;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return list;
+&nbsp;&nbsp;&nbsp;}
+}
+
+var x = new Impares();
+var y = new Pares();
+var z = new Dup();
+console.debug(z.duplicador(x));
+console.debug(z.duplicador(y));
+</pre>
+<p>Ambas as classes "Impares" e "Pares" possuem o mesmo contrato, isto é, as 
+duas vão ter uma função chamada "numerais". Por isso ambas servem como parâmetro
+para a classe "Dup".</p>
+<p>Em java, apenas ter o método de mesma assinatura não seria suficiente para 
+passarmos um ou outro objeto como argumento, mas precisaríamos também fazer com
+que ambos implementassem uma determinada interface e mudarmos a assinatura do 
+método que os receberia para receber a interface.</p>
+<p>Já em javascript, a tipagem é feita pro um processo conhecido por 
+<a href="#ref-ducktyping">Duck Typing</a>, que se por um lado te fornece a 
+chance de menor burocracia por outro pode falhar miseravelmente em runtime, 
+Observe:</p>
+<pre class="brush: js;">
+function B(){
+&nbsp;&nbsp;&nbsp;this.echo=function(){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return "bug bug!";
+&nbsp;&nbsp;&nbsp;}
+}
+function Innocent(){
+&nbsp;&nbsp;&nbsp;this.tentar=function(asdf){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return "tentei "+asdf.echo();
+&nbsp;&nbsp;&nbsp;}
+}
+var x = new B();
+var y = "oh noes...";
+var z = new Innocent();
+console.debug(z.tentar(x));
+console.debug(z.tentar(y));
+</pre>
+<p>O erro acima é de execução e não de compilação. Pra piorar, dependendo de 
+como você programe seu código nem linha de erro será apresentada. Por isso 
+recomenda-se ter ciência dessa possibilidade e saber quem é que você está 
+chamando e quem é que serve de parâmetro pra esse contexto.</p>
+<h2>Uso limitado de typeof</h2>
+<p>Esse operador é interessante pra checagens simples. Ele diz quem é o 
+construtor do objeto que você passar por parâmetro.</p>
+<p>Muito embora isso pareça tentador, recomendo fortemente que seus sistemas não
+dependam deste recurso, ele faz muito sentido dentro de linguagens como o java, 
+mas no javascript ele é facilmente enganado e isso pode ser desastroso.</p>
+<p>De qualquer forma, seguem as possibilidades do uso de typeof:</p>
+<pre class="brush: js;">
+var x = "teste"
+var y = 12
+var z = [1,2,3]
+var k = {a:"gato",b:4,c:true}
+function w(){
+&nbsp;&nbsp;&nbsp;return 123
+}
+typeof(x)/* string */
+typeof(y)/* number, agora observe os outros: */
+typeof(z)/* object */
+typeof(k)/* object */
+typeof(w)/* function */
+</pre>
+<p>Em resumo, não faça nada que dependa profundamente dessa funcionalidade.</p>
+<h2>classes aninhadas</h2>
+<p>Trata-se de botar uma classe dentro da outra:</p>
+<pre class="brush: js;">
+function DeFora(){
+&nbsp;&nbsp;&nbsp;var count = 0;	
+&nbsp;&nbsp;&nbsp;function DeDentro(){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var x = count++;		
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.asdf=function(){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return x;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;this.poeFora=function(){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return new DeDentro();
+&nbsp;&nbsp;&nbsp;}	
+}
+var z = new DeFora();
+var z1 = z.poeFora();
+var z2 = z.poeFora();
+var z3 = z.poeFora();
+console.debug(z1.asdf())
+console.debug(z2.asdf())
+console.debug(z3.asdf())
+</pre>
+<p>Use com moderação, pois você poderá incorrer em problemas com o uso do this:</p>
+<pre class="brush: js;">
+function A(){
+&nbsp;&nbsp;&nbsp;this.a=10;
+&nbsp;&nbsp;&nbsp;function B(){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.b=20;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.debug(this.a);/* undefined */
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.debug(this.b);
+&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;this.foo=function(){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B();
+&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;this.bah=function(){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;new B();
+&nbsp;&nbsp;&nbsp;}
+}
+var x = new A();
+x.foo();
+x.bah();
+</pre>
+<h1 id="ref-titulo-colecoes">Coleções</h1>
+<p>Filas, pilhas, listas, mapas, mas nada de árvores. De fato, das estruturas
+clássicas, apenas a árvore não tem par.</p>
+<p>O uso de coleções proporciona ao programador possibilidades interessantes de
+manipulação de massa de dados. Saber <span class="neg">usar</span> 
+as estruturas básicas de dados é requisito para qualquer desenvolvedor 
+profissional, e iremos conhecer como fazer uso das mesmas em javascript.</p>
+<h2>Push, pop, shift e unshift</h2>
+<p>O Array é a estrutura de coleções ordenadas em javascript. E o Array pode se
+comportar como Pilha muito facilmente. Para tanto usamos os métodos push e pop:</p>
+<pre class="brush: js;">
+var pilha = [0,1,2,3,4,5,6,7,8,9];
+var x = pilha.pop();
+var y = pilha.pop();
+var z = pilha.pop();
+console.debug(pilha);
+pilha.push(x);
+pilha.push(y);
+pilha.push(z);
+console.debug(pilha);
+</pre>
+<p>Pode-se ainda usar os métodos shift e unshift para o mesmo fim, mas com uma 
+diferença na orientação da lista:</p>
+<pre class="brush: js;">
+var pilha = ["a","b","c","d","e","f"];
+var x = pilha.shift();
+var y = pilha.shift();
+var z = pilha.shift();
+console.debug(pilha);
+pilha.unshift(x);
+pilha.unshift(y);
+pilha.unshift(z);
+console.debug(pilha);
+</pre>
+<p>O Array também pode funcionar como fila, basta combinar pop e unshift ou 
+push e shift:</p>
+<pre class="brush: js;">
+var fila = [{a:1},{a:2},{a:"x"},{b:6},{b:7},{c:16}];
+var x = fila.pop();
+var y = fila.pop();
+var z = fila.pop();
+console.debug(fila);
+fila.unshift(x);
+fila.unshift(y);
+fila.unshift(z);
+console.debug(fila);
+</pre>
+<p>Como imaginado, o outro par é uma fila inversa da apresentada anteriormente:</p>
+<pre class="brush: js;">
+function Cls(){
+&nbsp;&nbsp;&nbsp;this.asdf=function(){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return "aaaa";
+&nbsp;&nbsp;&nbsp;}
+}
+var fila = [1,"2",3,"4",5,"6",new Cls()];
+var x = fila.shift();
+var y = fila.shift();
+var z = fila.shift();
+console.debug(fila);
+fila.push(x);
+fila.push(y);
+fila.push(z);
+console.debug(fila);
+</pre>
+<p>Atente que para os exemplos os mais variados tipos de objetos foram 
+utilizados, apenas para demonstrar que as listas são conteiners agnósticos e, 
+mais uma vez, que a tipagem no javascript é menos que um detalhe.</p>
+<h2>Splice</h2>
+<p>Para operações mais elaboradas com listas, como adicionar um elemento bem no
+meio, remover algum que não seja o último, tem-se que utilizar o splice. Ele não
+possui um equivalente direto em java, mas ele cobre as funcionalidades do add,
+remove, removeAll e o replace (que não exatamente existe), observe:</p>
+<pre class="brush: js;">
+var lista = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
+var x = lista.splice(7,1);
+var y = lista.splice(7,1);
+var z = lista.splice(7,1);
+console.debug(lista);
+var sub = lista.splice(0,6);
+console.debug(sub);
+lista.splice(1,0,x[0],y[0],z[0]);
+console.debug(lista);
+lista.splice(13,1,"fim");
+console.debug(lista);
+while(sub.length)
+&nbsp;&nbsp;&nbsp;lista.unshift(sub.pop());
+console.debug(lista);
+</pre>
+<p>Exceto pelo truque com o laço pra adicionar uma sublista, inúmeras operações
+irão ser possíveis se você compreender bem o funcionamento do splice.</p>
+<h2>Object e a notação de mapa</h2>
+<p>Objetos do javascript são estruturas bastante flexíveis. Via de regra eles 
+são apenas mapas, conteiners com chave-valor.</p>
+<p>Abaixo as mais variadas notações que podemos usar:</p>
+<pre class="brush: js;">
+/* literal */
+var m = {
+&nbsp;&nbsp;&nbsp;chave1:"v1",
+&nbsp;&nbsp;&nbsp;chave2:"v2",
+&nbsp;&nbsp;&nbsp;chave3:"v3",
+}
+/* clássico */
+var m = new Object();
+m.chave1="v1";
+m.chave2="v2";
+m.chave3="v3";
+/*array-like*/
+var m = new Object(); /*{}*/
+m["chave1"]="v1";
+m["chave2"]="v2";
+m["chave3"]="v3";
+</pre>
+<h2>O operador 'in'</h2>
+<p>Via de regra o <span class="cod">in</span> 
+serve para verificar se um atributo existe ou não em um objeto:</p>
+<pre class="brush:js;">
+var x = {a:"x"};
+console.debug("a" in x);
+console.debug("b" in x);
+var y = [1,2,3,4];
+console.debug(0 in y);
+console.debug(7 in y);
+</pre>
+<p>Mas dentro de laços ele também tem uma aplicação interessante:</p>
+<pre class="brush:js;">
+var l = ["x","y","z","w"];
+for(var k in l)
+&nbsp;&nbsp;&nbsp;console.debug(k+" : "+l[k]);
+var m = {casa:"amarela",numeral:2,quitado:true};
+for(var p in m)
+&nbsp;&nbsp;&nbsp;console.debug(p+" : "+m[p]);
+</pre>
+<p>Com isso podemos ter acesso aos atributos de forma bem simples e genérica.</p>
+<h2>O operador 'delete'</h2>
+<p>Este operador serve para destruir referências. Embora sugestivo, o delete não
+destrói o objeto, mas apenas a referência que aponta para o objeto.</p>
+<pre class="brush:js">
+var lista = [{a:1},{b:2},{c:3},{d:4}];
+var obj = lista[2];
+console.debug(obj);/* ok, works */
+delete obj;
+console.debug(obj);/* erro! */
+</pre>
+<p>Como o <span class="cod">in</span> verifica se
+o atributo existe, laços com o 
+<span class="cod">in</span> elegantemente ignoram
+as referências nulas, o que pode ser útil em algumas situações de laço:</p>
+<pre class="brush:js">
+var lista = [0,1,2,3,4,5,6,7,8,9,undefined,null];
+delete lista[1];
+delete lista[3];
+delete lista[5];
+delete lista[7];
+delete lista[9];
+for (var i in lista)
+	console.debug(lista[i]);
+console.debug("tamanho: "+lista.length);
+</pre>
+<p>Um laço simples que ignora as referências deletadas. Note que referência 
+deletada é diferente de referência para 
+<span class="cod">null</span> ou 
+<span class="cod">undefined</span>, ;)</p>
+<h2>Sort</h2>
+<p>Não esqueçamos da função sort embutida:</p>
+<pre class="brush: js;">
+var lista = ["a","f","c","b","d"];
+var x = lista.sort();/*recebe-se a referência, mas a ordenação afeta a lista original*/
+console.debug(lista);
+console.debug(x);
+</pre>
+<p>Para objetos complexos, pode-se passar uma função de comparação adicional:</p>
+<pre class="brush:js;">
+var lista = [{a:1},{a:7},{a:11},{a:26},{a:9},{a:5}];
+lista.sort(function(ob1,ob2){
+&nbsp;&nbsp;&nbsp;return ob1.a - ob2.a;
+});
+</pre>
+<p>A função de ordenação obedece as regras de qualquer função comparadora como 
+as conhecemos: recebem dois parâmetros, retornam um número: 0 para valores iguais,
+menor que zero se ob1 menor que ob2 e maior que zero se ob1 maior que ob2. Em
+java, você pode ler sobre o <a href="#ref-framework-colecoes">framework de 
+coleções</a> para ter mais detalhes.</p>
+<h1 id="ref-titulo-estrategias-carregamento-script">Estratégias de carregamento de script</h1>
+<p>Aqui fazemos uma releitura do tópico de "hello worlds"; iremos ver como e 
+quando carregar os scrips à luz do que ele deve ou não fazer com os componentes
+da tela e apresentar nortes de qual abordagem escolher.</p>
+<p>Em um documento html, carregar um script significa declarar, em algum 
+momento, uma tag de script. Para todos os efeitos, tão logo esta tag é lida pelo 
+browser, o mesmo processa-a e gera código executável para todo o javascript nela
+encontrado. Este código se realiza, portanto, assim que a leitura da tag 
+finaliza. E é por isso que a distribuição das tags de script irão ter papel 
+decisivo na performance da sua aplicação.</p>
+<h2>Tags no header</h2>
+<p>O header foi pensado desde a sua origem para carregar os pequenos trechos de 
+javascript. À época não se tinha o dinamismo de hoje, e o costume padrão era
+declarar um punhado de funções simples que disparavam uns poucos alerts. Mesmo
+as api's de manipulação da árvore de tags eram poucas, e os eventos eram bem 
+limitados também.</p>
+<p>Uma tag no header irá se realizar inteira antes que o corpo do documento 
+esteja completo, por vezes sequer presente. Isso se dá porque o header é 
+carregado primeiro e mesmo com as técnicas de paralelização do download do 
+documento html o head tem precedência no carregamento de seus elementos.</p>
+<!-- colocar os exemplos de dando merda pedindo um id na tag do header -->
+<p>O código abaixo está perfeitamente válido, mas devido à localização da tag no
+header o elemento para o id pedido ainda não existe:</p>
+<pre><a target="sample" href="exemplos/erro-tag-header.html">erro-tag-header.html</a></pre>
+<pre class="brush: xml;">
+&lt;html&gt;
+&nbsp;&nbsp;&nbsp;&lt;head&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;meta http-equiv="content-type" content="text/html;charset=iso8859-1" /&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;script type="text/javascript"&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var erro = document.getElementById("innocent");
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alert(erro.value);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/script&gt;
+&nbsp;&nbsp;&nbsp;&lt;/head&gt;
+&nbsp;&nbsp;&nbsp;&lt;body&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input id="innocent" value="Eu não aconteci ainda!"/&gt;
+&nbsp;&nbsp;&nbsp;&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p>Então, se as coisas ainda não existem durante o carregamento do head, como é
+que scripts no head funcionam? Muito simples, você apenas declara funções no 
+head e as utiliza quando o documento efetivamente carregar.</p>
+<p>Funções de gatilho, como apresentadas no tópico de hello worlds, também podem
+contornar este tipo de limitação.</p>
+<p>Você também pode usar objetos que já existam em vez de usar objetos que ainda
+não foram realizados: objetos como o window já se encontram presentes quando o
+head é todo realizado.</p>
+<pre><a target="sample" href="exemplos/tag-header-objeto-window.html">tag-header-objeto-window.html</a></pre>
+<pre class="brush: xml;">
+&lt;html&gt;
+   &lt;head&gt;
+      &lt;meta http-equiv="content-type" content="text/html;charset=iso8859-1" /&gt;
+      &lt;script type="text/javascript"&gt;
+         var endereco = window.location
+         console.debug(endereco)
+      &lt;/script&gt;
+   &lt;/head&gt;
+   &lt;body&gt;
+   		&lt;h1&gt;window usável ainda no head&lt;/h1&gt;
+   &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p>Em resumo, usar o header implica em não usar o document, incluir gatilhos ou
+usar objetos que já estejam realizados.</p>
+<h2>Tags no final do body</h2>
+<p>Como vimos anteriormente, o carregamento do documento é relativamente 
+dependente da tag em questão. </p>
+<p>Uma técnica de 'maior velocidade' consiste em usar o fim do body, isto é, 
+após todos os elementos de conteúdo relevante adicionamos as tags de script que
+iremos usar.</p>
+<p>O principal benefício é não depender de gatilhos como exemplificado na seção 
+de hello worlds. Desse modo, construções muito similares à apresentada 
+anteriormente ficam perfeitamente funcionais:</p>
+<pre><a target="sample" href="exemplos/tag-footer.html">tag-footer.html</a></pre>
+<pre class="brush: xml;">
+&lt;html&gt;
+   &lt;head&gt;
+      &lt;meta http-equiv="content-type" content="text/html;charset=iso8859-1" /&gt;
+   &lt;/head&gt;
+   &lt;body&gt;
+      &lt;input id="sabido" value="Valor! Valor!"/&gt;
+      &lt;script type="text/javascript"&gt;
+	    var campo = document.getElementById("sabido");
+		alert(campo.value)
+      &lt;/script&gt;
+   &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p>Não usar gatilho lhe garante um código mais compreensível, limpo e que por
+vezes poderá ser lido da direita para a esquerda, de cima para baixo, sem a 
+necessidade prévia de encontrar o ponto de entrada.</p>
+<p>Observe que usualmente deixa-se uma única tag final, em detrimento a inserir
+duas ou mais tags, independente do script ficar no corpo da tag ou ser apenas 
+referenciado no atributo src.</p>
+<p>Embora tenha vantagens, quando sua página é complexa e faz uso de alguma 
+biblioteca, você pode enfrentar problemas com ponteiros nulos; algumas destas 
+bibliotecas para funcionar precisam que o document esteja completo para se
+tornarem disponíveis. Se este for o caso, você deverá ajustar seu código para 
+ser disparado por algum gatilho, preferencialmente o que a biblioteca 
+problemática recomendar.</p>
+<h2>Tags no decorrer do corpo do body</h2>
+<p>Este caminho nos leva para cenários com vários pontos de inserção. Tags de 
+script apenas no começo ou tags de script apenas no final auxiliavam 
+principalmente na compreensão do código durante todo o seu ciclo de vida.</p>
+<p>Ao espalhar as tags por todo o documento, esteja preparado para ler ele todo 
+em vez de ir cirurgicamente ao ponto exato onde os scripts são carregados. Esta
+é, para todos os efeitos, uma má prática.</p>
+<p>A única exceção que se forma onde podemos afirmar que essa abordagem é 
+recomendável é quando tanto documento quanto script são "renderizados" por 
+alguma lógica no lado do servidor. Neste caso, renderizar a tag no decorrer do
+documento implica em algum laço escrevendo blocos repetitivos de alguma lógica
+que deverá ser aplicada ao elementos acima. Mesmo com esta exceção, ainda é
+possível renderizar todos os cripts juntos com um segundo laço, mas esta 
+abordagem irá depender muito do contexto onde o script se insere.</p>
+<p>Tags aplicadas ao documento neste estilo devem levar em conta o fato de não 
+poderem referenciar nenhum elemento abaixo dela, e que podem ter suas variáveis
+manipuladas pelas tags que se seguem, isto é, uma tag de script pode "ver" os 
+elementos HTML acima dela bem como as variáveis ou funções javascript criadas 
+por tags acima dela, ou mesmo variáveis ou funções javascript criadas pelas tags
+de script no head do documento.</p>
+<p>Um exemplo didático segue:</p>
+<pre><a target="sample" href="exemplos/tags-corpo.html">tags-corpo.html</a></pre>
+<pre class="brush: xml;">
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;meta http-equiv="content-type" content="text/html;charset=iso8859-1" /&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		&lt;input id="a" value="campo a"/&gt;
+		 &lt;script type="text/javascript"&gt;
+	         var a = document.getElementById("a");
+	         console.debug("tag1, elemento a: "+(a ? a.value : "null/undefined"));
+	         var b = document.getElementById("b");
+	         console.debug("tag1, elemento b: "+(b ? b.value : "null/undefined"));
+	         var c = document.getElementById("c");
+	         console.debug("tag1, elemento c: "+(c ? c.value : "null/undefined"));
+	         console.debug(" ");
+      	&lt;/script&gt;
+		&lt;input id="b" value="campo b"/&gt;
+		 &lt;script type="text/javascript"&gt;
+	         console.debug("tag2, elemento a: "+(a ? a.value : "null/undefined"));
+	         b = document.getElementById("b");
+	         console.debug("tag2, elemento b: "+(b ? b.value : "null/undefined"));
+	         c = document.getElementById("c");
+	         console.debug("tag2, elemento c: "+(c ? c.value : "null/undefined"));
+	         console.debug(" ");
+      	&lt;/script&gt;
+		&lt;input id="c" value="campo c"/&gt;
+		 &lt;script type="text/javascript"&gt;
+	         console.debug("tag3, elemento a: "+(a ? a.value : "null/undefined"));
+	         console.debug("tag3, elemento b: "+(b ? b.value : "null/undefined"));
+	         c = document.getElementById("c");
+	         console.debug("tag3, elemento c: "+(c ? c.value : "null/undefined"));
+	         console.debug(" ");
+      	&lt;/script&gt;
+	&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<h2>Late binding através de eventos</h2>
+<p>Esta técnica consiste em carregar o script inerente àquele trecho de página 
+em outro momento que não seja o carregamento da página.</p>
+<p>Se pensarmos no carregamento do documento (que nos permite usar os blogos de 
+código bem limpos, no "contexto global") como um evento, podemos fazer a 
+analogia inversa também para os eventos e imaginar cada um deles como um ponto 
+de entrada.</p>
+<p>É bem verdade que eventos tem direitos adicionais como por exemplo objetos 
+criados por scripts realizados no carregamento do documento, mas a vantagem 
+especial existente em um documento há muito exposto à interação com o usuário,
+pois a idéia por trás do late binding é tanto mudar o comportamento de um 
+componente após algum evento quanto carregar dinamicamente o comportamento de 
+trechos de documento carregados igualmente após algum evento gerador.</p>
+<p>O exemplo abaixo demonstra uma interação simples onde um evento carrega 
+comportamentos para um outro elemento de tela:</p>
+<pre><a target="exemplos" href="exemplos/late-binding-1.html">late-binding-1.html</a></pre>
+<pre class="brush:xml;">
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;meta http-equiv="content-type" content="text/html;charset=iso8859-1" /&gt;
+		&lt;!-- biblioteca externa --&gt;
+		&lt;script type="text/javascript" src="../../mascaras.js"&gt;&lt;/script&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		&lt;h1&gt;Formulário Escroto&lt;/h1&gt;
+		&lt;h5&gt;Se seu analista ainda não te pediu isso, saiba que um dia pode acontecer, ;)&lt;/h5&gt;
+		&lt;label for="tipo"&gt;Tipo de pessoa: &lt;/label&gt;
+		&lt;select id="tipo"&gt;
+			&lt;option value="F"&gt;Física&lt;/option&gt;
+			&lt;option value="J"&gt;Jurídica&lt;/option&gt;
+		&lt;/select&gt;
+		&lt;br /&gt;
+		&lt;label&gt;CPF/CNPJ: &lt;/label&gt;
+		&lt;input id="cpfcnpj"/&gt;
+		&lt;script type="text/javascript"&gt;
+			var tipo = document.getElementById("tipo");
+			tipo.selectedIndex=0;/*hard reset */
+			var cpfcnpj = new CpfMask(document.getElementById("cpfcnpj"));
+			cpfcnpj.value="";
+			/* evento do combo */
+			tipo.onchange=function(){
+				cpfcnpj.value="";
+				if(cpfcnpj.mascara)
+					cpfcnpj.mascara.desinstalar();
+				if(tipo.value==="F")
+					new CpfMask(cpfcnpj);
+				else if(tipo.value==="J")
+					new CnpjMask(cpfcnpj);
+			};
+		&lt;/script&gt;
+	&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p>Note a dependência entre o select (combobox) e o campo cpfcnpj: o 
+funcionamento de um depende do outro, e vários comportamentos são criados ou 
+removidos a cada iteração do evento.</p>
+<p>Atente ainda que o contexto de carregamento não foi ignorado; de fato, as
+referências criadas ainda na realização da tag de script são perfeitamente
+referenciáveis dentro do contexto do evento, que muito embora sirva de entrada
+para o componente de mascaras tem direito a todo o contexto que o precedeu.</p>
+<h3>Uso do maligno eval</h3>
+<p>O eval é uma forma de carregar e definr scripts, é extremamente útil no 
+contexto de objetos que irão ser criados baseados em parâmetros da execução, mas
+deve ser evitado a todo custo.</p>
+<p>Javascript é uma linguagem interpretada, não é compilada, e muitos errsos 
+somente são percebidos em tempo de execução. O uso de eval aumenta ainda mais as 
+chances de erros ocorrerem.</p>
+<p>Note ainda que os objetos criados dentro da string do eval serão contidos no
+contexto onde o mesmo for chamado. Muitas vezes ele é chamado no contexto global 
+do script, o que deposita as referências criadas em área visível a muitos 
+escopos:</p>
+<pre><a target="exemplos" href="exemplos/eval-evil.html">eval-evil.html</a></pre>
+<pre class="brush:xml">
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;title&gt;Eval Evil&lt;/title&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		&lt;label&gt;Hmmm...&lt;/label&gt;
+		&lt;input value=""/&gt;
+		&lt;script type="text/javascript"&gt;
+			var inp = document.getElementsByTagName("input")[0];
+			console.debug(inp);
+			var x = 2;
+			eval("var x = 3");/*adivinhe qual x vai valer...*/
+			inp.value=x;
+			console.debug(inp.value);
+			/*faça um erro no eval e veja o que acontece:*/
+			eval("vat y = inp.value");
+			console.debug("boom! você jamais me verá!");
+		&lt;/script&gt;
+	&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p>O erro de sintaxe acima até o modo de destaque do seu editor de códigos 
+encontrava, mas porque o código é na verdade uma string sem significado 
+semântico especial (embora tenha significado lógico) o erro pode passar 
+despercebido pelos olhos desatentos dos desenvolvedores.</p>
+<h3>fazendo appendChild em tag de script</h3>
+<p>Esta abordagem tem uma implicações arquiteturais interessantes, além de ser a
+forma mais "late-binding" de todas, isto é, a mais tardia de todas. Pense no 
+javascript gerenciando o carregamento do script ainda localizado no servidor.</p>
+<p>Usualmente <span class="neg">declaramos</span> as tags de
+script que serão realizadas naquele documento. Ao carregar programaticamente 
+estamos determinando a realização de código em função de alguma lógica de tela:
+muitas vezes, funções inteiras não existem até o momento de serem apendadas e,
+ao chegarem ao browser, serem realizadas de forma similar ao que foi o evento de
+carregamento de página original. Observe abaixo:</p>
+<pre><a target="exemplos" href="exemplos/late-binding2.html">late-binding2.html</a></pre>
+<pre class="brush: xml;">
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;meta http-equiv="content-type" content="text/html;charset=iso8859-1" /&gt;
+		&lt;script type="text/javascript" src="../../firebug-lite/firebug-lite.js#startOpened"&gt;&lt;/script&gt;
+		&lt;style type="text/css"&gt;
+			#aguarde{
+				position:absolute;
+				top:40%;
+				left:0px;
+				width:100%;
+				height:60px;
+				background: silver;
+				display:none;
+			}
+		&lt;/style&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		&lt;h1&gt;Agenda preguiçosa&lt;/h1&gt;
+		&lt;div id="aguarde"&gt;&lt;h1&gt;Aguarde...&lt;/h1&gt;&lt;/div&gt;
+		&lt;div id="modulo"&gt;
+			&lt;label&gt;Nome: &lt;/label&gt;&lt;input id="nome"/&gt;
+			
+		&lt;/div&gt;
+		&lt;script type="text/javascript" src="late-binding2-a.js"&gt;&lt;/script&gt;
+	&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<pre><a target="sample" href="exemplos/late-binding2-a.js">late-binding2-a.js</a></pre>
+<pre class="brush:js;">
+/* contexto de referências inicial. Todos os trechos terão direito a elas */
+var aguarde = document.getElementById("aguarde");
+var modulo = document.getElementById("modulo");
+var nome = document.getElementById("nome");
+nome.onblur=function(){
+	aguarde.style.display="block";
+	setTimeout(function(){
+		var tag = document.createElement("label");
+		tag.innerHTML="Endereço: ";
+		modulo.appendChild(tag);
+		tag = document.createElement("input");
+		tag.id="endereco";
+		modulo.appendChild(tag);
+		tag = document.createElement("script");
+		tag.src='late-binding2-b.js';
+		modulo.appendChild(tag);
+		nome.onblur=null;/*desconectando o evento*/
+	},1500);/*para dar tempo de ver o aguarde*/
+};
+</pre>
+<pre><a target="sample" href="exemplos/late-binding2-b.js">late-binding2-b.js</a></pre>
+<pre class="brush:js;">
+/* sanidade da tela */
+aguarde.style.display="none";
+/* mais do mesmo */
+var endereco = document.getElementById("endereco");
+endereco.onblur=function(){
+	aguarde.style.display="block";
+	setTimeout(function(){
+		var tag = document.createElement("label");
+		tag.innerHTML="Telefone: ";
+		modulo.appendChild(tag);
+		tag = document.createElement("input");
+		tag.id="telefone";
+		modulo.appendChild(tag);
+		tag = document.createElement("script");
+		tag.src='late-binding2-c.js';
+		modulo.appendChild(tag);
+		endereco.onblur=null;
+	},1500);
+};
+</pre>
+<pre><a target="sample" href="exemplos/late-binding2-c.js">late-binding2-c.js</a></pre>
+<pre class="brush:js;">
+/* trecho de script do fragmento 3*/
+aguarde.style.display="none";
+</pre>
+<p>O curioso sobre esta técnica é que você pode carregar a página levando em
+conta o estado atual do forumlário. Tem-se ainda um carregamento do estado 
+inicial muito rápido, pois trechos inteiros são deixados para trás até serem 
+recuperados e incorporados ao documento principal.</p>
+<p>Observe ainda a lógica processada para o carregamento das tags; veja também 
+que embora uma tag carregue a outra, após carregada a recém-realizada tem os 
+mesmos direitos que as outras já presentes na tela.</p>
+<!-- completar e por o exemplo -->
+<h1 id="ref-titulo-gui-eventos">GUI e eventos</h1>
+<p>Este tópico abrange a forma de interagir com os componentes de tela e como 
+devemos proceder para montar a partir de poucas tags uma tela dinâmica.</p>
+<p>Veremos também uma forma de organizar o código de modo a não causar problemas
+quando a refatoração ou alguma manutenção chegar.</p>
+<h2>Eventos onclick,onblur,onfocus, etc crossbrowser</h2>
+<p>Eventos são a força motora das interfaces de usuário. Estes são a principal
+característica da camada de controle (que veremos adiante), e garantir que eles
+vão funcionar corretamente em todos os navegadores minimamente decentes da face 
+da terra (so sorry links e lynx) é uma necessidade real.</p>
+<p>A solução simples aqui é usar os atributos de evento diretamente na 
+referência da tag já no javascript. Nada de atributos nas tags com chamadas 
+javascript, <span class="warn">isso é pecado e proibido agora.</span><p>
+<p>Vamos ao detalhamento longo:</p>
+<p>No início apenas os atributos de evento e os atributos de tags eram possíveis
+se se utilizar. É o que conhecemos informalmente hoje como 
+<a href="#ref-dom-0">DOM Level 0 e 1</a>. Assim, se eu desejasse ver um alert na 
+tela após apertar um botão, uma das duas alternativas abaixo seria usada:</p>
+<pre><a target="exemplos" href="exemplos/evento1.html">evento1.html</a></pre>
+<pre class="brush:xml;">
+&lt;html&gt;
+   &lt;head&gt;
+   		&lt;title&gt;DOM 0&lt;/title&gt;
+      &lt;meta http-equiv="content-type" content="text/html;charset=iso8859-1" /&gt;
+       &lt;script type="text/javascript"&gt;
+			function ola(){
+				alert("Olá!");
+			}
+      &lt;/script&gt;
+   &lt;/head&gt;
+   &lt;body&gt;
+   		&lt;!-- PECADO --&gt;
+      &lt;button onclick="ola()"&gt;Olá&lt;/button&gt;
+   &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p>Esta é a mais clássica, e com menor uso de linhas de código, uma a menos pra
+ser exato. Abaixo, o outro jeito de fazer, a forma correta eu diria.</p>
+<pre><a target="exemplos" href="exemplos/evento2.html">evento2.html</a></pre>
+<pre class="brush:xml;">
+&lt;html&gt;
+   &lt;head&gt;
+   		&lt;title&gt;DOM 1&lt;/title&gt;
+      &lt;meta http-equiv="content-type" content="text/html;charset=iso8859-1" /&gt;
+   &lt;/head&gt;
+   &lt;body&gt;
+      &lt;button id="greet"&gt;Olá&lt;/button&gt;
+      &lt;script type="text/javascript"&gt;
+			var botao = document.getElementById("greet");
+      		botao.onclick = function(){
+				alert("Olá!");
+			}
+      &lt;/script&gt;
+   &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p>Num primeiro momento, essa segunda abordagem não parece apresentar vantagem 
+alguma, mas com telas maiores e mais complexas o fato de se recuperas as 
+referências irá promover o reuso, bem como facilitar o acesso e a modificação de 
+valores sob estas referências.</p>
+<p>Houve uma evolução na API de eventos e a mesma passou a suportar vários 
+handlers de eventos; O problema foi que a especificação Microsoft ficou pronta 
+bem antes da versão W3C, o que levou a uma séria cisão entre o padrão de fato e 
+o padrão especificado pela indústria.</p>
+<p>O exemplo abaixo, embora um pouco aparatado, destaca bem o problema:</p>
+<pre><a target="exemplos" href="exemplos/evento3.html">evento3.html</a></pre>
+<pre class="brush:xml">
+&lt;html&gt;
+   &lt;head&gt;
+   		&lt;title&gt;DOM 2&lt;/title&gt;
+      &lt;meta http-equiv="content-type" content="text/html;charset=iso8859-1" /&gt;
+      &lt;script type="text/javascript" src="../../firebug-lite/firebug-lite.js#startOpened"&gt;&lt;/script&gt;
+   &lt;/head&gt;
+   &lt;body&gt;
+   	&lt;h1&gt;O attachEvent funciona no IE e não funciona nos outros.&lt;/h1&gt;
+   	&lt;h1&gt;O addEventListener funciona nos outros e não funciona no IE&lt;/h1&gt;
+      &lt;button id="greet1"&gt;Olá com addEventListener&lt;/button&gt;
+      &lt;button id="greet2"&gt;Olá com attachEvent&lt;/button&gt;
+      &lt;script type="text/javascript"&gt;
+			/* eventos DOM level 2 */
+			try{
+				var botao = document.getElementById("greet1");
+	      		botao.addEventListener("click",function(){
+					alert("Olá!");
+				},true);
+	      		botao.addEventListener("click",function(){
+					console.debug("podemos attachar vários eventos agora");
+				},true);
+			}catch(e){
+				console.debug("hum... estamos no IE");
+			}
+			
+			try{
+				var botao2 = document.getElementById("greet2");
+	      		botao2.attachEvent("onclick",function(){
+					alert("Olá!");
+				});
+	      		botao2.attachEvent("onclick",function(){
+					console.debug("podemos attachar vários eventos agora");
+				});
+			}catch(e){
+				console.debug("hum... estamos nos outros browsers");
+			}
+			console.debug("nota: mesmo no escopo do try, botao e botao2 serão visíveis no contexto global.")
+      &lt;/script&gt;
+   &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p>Usei os onclicks aqui no exemplo, mas deve-se ler a <a href="#ref-eventos">
+referência dos outros eventos</a> para produzir telas mais dinâmicas.</p>
+<h2>Callback assíncrono</h2>
+<p>Além de dominar o uso de eventos DOM nível 1, compreender a mais sofisticada 
+e performática forma de carregamento de dados a partir do servidor é
+mandatório aqui.</p>
+<p>A idéia por trás de carregar dados por XHR é bem simples: tela e script 
+entrarão nas rotinas de cache, e uma vez carregados poderão ser reaporveitados 
+em um segundo acesso ao aplicativo. Já os dados são trazidos separados, sem 
+qualquer informação inerente à apresentação dos mesmos (eles virão na forma de
+listas ou objetos de grafo profundo, ambos em json, xml ou eval maligno), de 
+modo que cabe ao controle joga-los para a camada de apresentação.</p>
+<p>Existem várias tecnicas de carregamento que podem ser empregadas aqui, todas
+irão depender do retorno de alguma requisição HTTP que irá envolver assíncronas.
+É possível usar iframe, jsonp e o próprio XHR, mas iremos focar no XHR porque
+é a técnica que eu recomendo para a grande maioria das aplicações, e iremos nos
+ater aos comportamentos assíncronos porque não podemos nos dar ao luxo de 
+suspender a thread da interface de usuário até o processamento terminar.</p>
+<p>O exemplo abaixo mostra como proceder para o uso de chamadas assíncronas:</p>
+<pre><a target="exemplos" href="exemplos/evento4.html">evento4.html</a></pre>
+<pre class="brush:xml;">
+&lt;html&gt;
+   &lt;head&gt;
+   		&lt;title&gt;XHR Assíncrono&lt;/title&gt;
+      &lt;meta http-equiv="content-type" content="text/html;charset=iso8859-1" /&gt;
+      &lt;script type="text/javascript" src="../../jquery/jquery-1.4.2.js"&gt;&lt;/script&gt;
+   &lt;/head&gt;
+   &lt;body&gt;
+      &lt;button id="greet"&gt;carregar lista&lt;/button&gt;
+   		&lt;ul id="retorno"&gt;
+   			&lt;!-- dynamic data goes there --&gt;
+   		&lt;/ul&gt;
+      &lt;script type="text/javascript"&gt;
+      		/* usando um pouco de jQuery. */
+			var botao = $("#greet");
+			var retorno = $("#retorno");
+      		botao.click(function(){
+      			retorno.text("");/* sanidade */
+      			console.debug("1 - Evento disparado e callback realizado");
+      			$.get("exemplo-evento4.json",function(texto){
+	      			var asdf;/* eval maligno */
+      				eval("asdf = "+texto);
+      				$.each(asdf.dados,function(i){
+      					retorno.append("&lt;li&gt;"+this.nome+"&lt;/li&gt;");
+      				});
+      				console.debug("3 - Fim do callback");
+      			});
+      			console.debug("2 - Fim do evento");
+			});
+      &lt;/script&gt;
+   &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p>No exemplo acima o callback é a função anônima passada por parâmetro para a 
+função "$.get". O primeiro parâmetro era a uri de onde os dados virão e o 
+segundo parâmetro é o callback</p>
+<p>Tenha sempre em mente que o callback não interrompe o fluxo de execução, por
+isso se você depende do retorno dos dados do servidor para alguma ação, imagine
+que seu código não continua depois da chamada da função remota, mas sim dentro
+do callback. Observe que me refiro à continuação da lógica do programa, não à
+continuação do fluxo de execução. Este segue normal, você dispara a chamada 
+remota dando um callback pra ela e no dia que a mesma voltar é muito provável 
+que o bloco que a pariu já tenha terminado sua vida há muito tempo.</p>
+<h2>Model-View-Control</h2>
+<p>Se você já programou em java, já ouviu falar deste trio, não vou lhe 
+aborrecer mais com ele. Vou apenas apontar, sob a luz do javascript como fica a
+caracterização destes elementos em uma aplicação javascript de qualidade 
+superior.</p>
+<h3>Model</h3>
+<p>É evidente que o modelo é o que vier do seu servidor. Mas não se resume a 
+isso, pois muitas vezes os dados não vem prontos para serem apresentados. De 
+fato, é bom que os dados venham otimizados para o transporte, não para a tela.</p>
+<p>Dito isso, algumas emanações de modelo podem assumir forma de variáveis no
+javascript por um determinado período de tempo, basicamente o tempo necessário
+para que a camada de controle reaja a alguma ação do usuário ou ao próprio 
+carregamento dos dados oriundos da camada de modelo.</p>
+<p>O trecho abaixo, embora fictício, exemplifica o papel do modelo e uma forma
+de tratamento do retorno do mesmo:</p>
+<pre class="brush:js">
+/* outras funções, atributos, etc */
+var dados;/* referência aos dados de modelo */
+
+/* RPC assíncrono com callback de tratamento de retorno, parte do controle */
+CotacaoFacade.recuperarDados(11,"M",function (retorno){
+	dados = retorno;
+	update();/* chamada à função que popularia o forumlário ou tabela */
+	/* não necessariamente o update tem acesso ao retorno do callback */
+	/* mas certamente pode usar a referência dados */
+});
+/* life keeps going */
+</pre>
+<p>Observe que as estruturas de controle agem para recuperar os dados e em
+seguida os mantém referenciados. Apenas nesta referência é que teremos então 
+acesso ao que retornou do servidor de forma assíncrona e foi recepcionada pelo 
+callback anônimo do terceiro parâmetro.</p>
+<p>A referência de cache, inclusive, não precisa ser um elemento "toplevel"; ela
+pode ser acoplável a outro objeto de modelo de grafo mais profundo. Supondo um
+objeto pra representar uma proposta de endosso, a lista retornada poderia ser
+um atributo deste objeto, a lista de coberturas, por exemplo:</p>
+<pre class="brush:js">
+/* ...coisas antes... */
+var proposta = {
+	cdProposta:3245345,/* por exemplo */
+	listaCob:[]
+};
+/* ...coisas durante... */
+CotacaoFacade.recuperarCoberturasEndosso(proposta.cdProposta,function (retorno){
+	proposta.listaCob=retorno;
+	update();
+});
+/* life keeps going */
+</pre>
+<h3>View</h3>
+<p>A view é a camada mais evidente e mais fácil de se identificar: o view são 
+as tags de "conteúdo" do documento. Salvo casos raros que você verá código 
+javascript criando programaticamente elementos de tela, usualmente a visão está
+pronta e é meramente referenciada com uns tantos "document.getElementById()" 
+(ou "$()", depende da biblioteca que já tenha nessa página) apenas nas entidades
+ realmente relevantes, deixando elementos de morganização sem referência alguma.</p>
+<p>View em javascript não deve ser um grande problema: temos o html e o css que
+são liguagens especialistas para resolver uns 80% dos eventuais problemas de 
+apresentação dos dados, poucas referências especiais de propósito unicamente 
+estético irão aparecer no script.</p>
+<h3>Control</h3>
+<p>A camada de controle é o javascript. Agora vamos à resposta longa:</p>
+<p>O controle é a camada responsável por orquestrar a sequência de eventos e 
+basicamente manipula dados do modelo para a camada de visão e vice-versa, dadas
+algumas regras de validação mais "grosseiras" que determinam se os dados são
+minimamente válidos</p>
+<p>No javascript devemos ter referências para elementos da visão e para 
+elementos da camada de modelo; o controle orquestra como cada um dos elementos
+vão interagir, em que momento e baseado em que eventos os dados irão transitar
+entre uma camada e outra.</p>
+<p>Na web você pode entender que o MVC não só é possível como também possui
+linguagens especialistas para cada camada; num cenário puramente web, as tags 
+seriam os dados e parte da apresentação, o css cuidaria do resto da apresentação
+e o javascript é a linguagem especialista de controle, com extensões para 
+gerenciar o interfaceamento com as outras camadas do MVC</p>
+<p>MVC no geral é conversa muito abstrata, vá <a href="#ref-mvc">estudar</a> os 
+detalhes se eles realmente lhe incomodarem.</p>
+<h2>A propriedade style</h2>
+<p>As definições de estilo do documento servem para cuidar de detalhes menores 
+como tamanho e cor. Dependendo de como o seletor foi declarado, ele pode afetar
+um ou mais elementos.</p>
+<p>Caso alguma interação com o usuário demande a modificação de algo nas 
+definições <a href="#ref-css">css</a>, cada elemento html permite a modificação
+das propriedades localmente afetadas através da propriedade style.</p>
+<p>Modificar a propriedade style de um único elemento recuperado da DOM, 
+entretanto, afetará apenas este elemento, mesmo que vários outros tenham sido 
+afetados pela regra da folha css:</p>
+<pre><a target="exemplos" href="exemplos/estilo.html">estilo.html</a></pre>
+<pre class="brush:xml">
+&lt;html&gt;
+   &lt;head&gt;
+   		&lt;title&gt;Estilo&lt;/title&gt;
+      &lt;meta http-equiv="content-type" content="text/html;charset=iso8859-1" /&gt;
+      &lt;style&gt;
+      	input{/* regra genérica afeta os 3 campos */
+      		border:1px black solid;
+      		background: #EEFFEE;
+      	}
+      &lt;/style&gt;
+   &lt;/head&gt;
+   &lt;body&gt;
+      &lt;label for="nome"&gt;Nome: &lt;/label&gt;&lt;input id="nome"/&gt;&lt;br/&gt;
+      &lt;label for="endereco"&gt;Endereço: &lt;/label&gt;&lt;input id="endereco"/&gt;&lt;br/&gt;
+      &lt;label for="telefone"&gt;Telefone: &lt;/label&gt;&lt;input id="telefone"/&gt;&lt;br/&gt;
+      &lt;hr/&gt;
+      &lt;span id="description"&gt;&lt;/span&gt;
+      &lt;script type="text/javascript"&gt;
+			/* referências */
+      		var nome = document.getElementById("nome");
+			var endereco = document.getElementById("endereco");
+			var telefone = document.getElementById("telefone");
+			var dsc = document.getElementById("description");
+			/* eventos de modificação da span de descrição*/
+			nome.onfocus=function(){
+				dsc.innerHTML="nome que consta no documento oficial do cliente";
+				dsc.style.color="#FF1111";
+				
+			};
+			nome.onblur=function(){
+				if(nome.value === "")
+					nome.style.background="#FFFFEE";
+				else
+					nome.style.background="#EEFFEE";
+			};
+			endereco.onfocus=function(){
+				dsc.innerHTML="logradouro da residência do cliente";
+				dsc.style.fontWeight="bolder";
+			};
+			endereco.onblur=function(){
+				if(endereco.value === "")
+					endereco.style.background="#FFFFEE";
+				else
+					endereco.style.background="#EEFFEE";
+			};
+			telefone.onfocus=function(){
+				dsc.innerHTML="telefone de contato do cliente";
+				dsc.style.border="1px black groove";
+			};
+			telefone.onblur=function(){
+				if(telefone.value === "")
+					telefone.style.background="#FFFFEE";
+				else
+					telefone.style.background="#EEFFEE";
+			};
+      &lt;/script&gt;
+   &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p>Em resumo, a regra css afeta os três campos de input, mas modificar o objeto 
+style de um deles afeta apenas o input selecionado.</p>
+<p>Uma referência que recomendo para saber os elementos utilizáveis que estão 
+sob o atributo style encontra-se <a href="#ref-style">aqui</a>.</p>
+<h2>Hidden div</h2>
+<p>As divs ocultas são uma das técnicas mais antigas que existem para criar 
+efeitos dinâmicos em sistemas web.</p>
+<p>Muitas vezes compensa trazer os pedaços da tela sob demanda, mas é importante
+compreender como funciona e saber como lidar com elas:</p>
+<pre><a target="exemplos" href="exemplos/divoculta.html">divoculta.html</a></pre>
+<pre class="brush:xml;">
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"&gt;
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"&gt;
+		&lt;title&gt;DIV's ocultas&lt;/title&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		&lt;div&gt;
+			&lt;fieldset&gt;
+				&lt;legend&gt;Dados segurado&lt;/legend&gt;
+				&lt;label for="nme"&gt;Nome&lt;/label&gt;&lt;input id="nme"/&gt;&lt;br/&gt;
+				&lt;label for="end"&gt;Endereço&lt;/label&gt;&lt;input id="end"/&gt;&lt;br/&gt;
+				&lt;label for="tel"&gt;Telefone&lt;/label&gt;&lt;input id="tel"/&gt;&lt;br/&gt;
+				&lt;button id="more1"&gt;Mais&lt;/button&gt;
+			&lt;/fieldset&gt;
+		&lt;/div&gt;
+		&lt;div id="b" style="display:none;"&gt;
+			&lt;fieldset&gt;
+				&lt;legend&gt;Dados do veículo&lt;/legend&gt; 
+				&lt;label for="mar"&gt;Marca&lt;/label&gt;&lt;input id="mar"/&gt;&lt;br/&gt;
+				&lt;label for="vei"&gt;Veículo&lt;/label&gt;&lt;input id="vei"/&gt;&lt;br/&gt;
+				&lt;label for="ano"&gt;Ano&lt;/label&gt;&lt;input id="ano"/&gt;&lt;br/&gt;
+				&lt;button id="enviar"&gt;OK!&lt;/button&gt;
+			&lt;/fieldset&gt;
+		&lt;/div&gt;
+		&lt;script type="text/javascript"&gt;
+			var div = document.getElementById("b");
+			
+			var b1 = document.getElementById("more1");
+			var b2 = document.getElementById("enviar");
+			
+			b1.onclick=function(){
+				div.style.display="block";
+			};
+			b2.onclick=function(){
+				div.style.display="none";
+			};
+		&lt;/script&gt;
+	&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p>Basicamente a tela já possui todos os elementos necessários para vários dos 
+fluxos possíveis na tela, mas mostramos apenas uma parte deles por vez.</p>
+<h2>Links e targets</h2>
+<p>Ao usar links para navegar eventualmente eles costumam recarregar a página 
+toda, e com isso levar embora também o contexto do script associado ao documento
+atual.</p>
+<p>A solução é extremamente simples, basta usar o atributo target da tag link:</p>
+<pre class="brush:xml">
+	&lt;a href="uma-nova-pagina.html" target="nome-do-frame"&gt;IR&lt;a&gt;
+</pre>
+<p>O target cria ou referencia um frame nomeado; tantos os frames completos como
+iframes e também janelas ou abas inteiramente novas podem ser referenciadas no
+atributo target.</p>
+<h2>A arte maligna da navegação entre frames</h2>
+<p>Se por algum motivo sua página precisa de vários níveis de frames, 
+<span class="warn">tente inicialmente refatorar e se 
+livrar deles</span>. Injete com XHR, o que for.</p>
+<p>Em não sendo possível,nomeie os frames adequadamente. Seja um documento de
+frameset ou apenas iframes, não deixe de informar o atributo name dos frames. 
+Mais ainda, você deve compreender como os scripts de cada frame irá interagir.</p>
+<p>Uma técnica interessante consistem em referenciar os objetos importantes sob
+o document, criando assim atributos customizados.</p>
+<p>No final, usar targets, scripts com chamadas em escopo conhecido, e se for 
+possível sequer usar, frames não irão ficar no seu caminho.</p>
+<p>O exemplo abaixo tenta exemplificar como um menu com targets chaveando 
+páginas que disparam eventos que referenciam objetos no contexto do documento 
+principal poderia se comportar:</p>
+<pre><a target="exemplos" href="exemplos/frames1.html">frames1.html</a></pre>
+<pre class="brush:xml">
+&lt;?xml version="1.0" encoding="ISO-8859-1" ?&gt;
+&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN"
+   "http://www.w3.org/TR/html4/frameset.dtd"&gt;
+&lt;html&gt;
+&lt;head&gt;
+	&lt;meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" /&gt;
+	&lt;title&gt;Frames&lt;/title&gt;
+	&lt;script type="text/javascript"&gt;
+		/* objeto customizado sob o document. Poderia ser qualquer coisa */
+		document.dadosNav={
+				sequencia:"",
+				count:0
+		};	
+	&lt;/script&gt;
+&lt;/head&gt;
+&lt;frameset cols="20%,80%" frameborder="no"&gt;
+    &lt;frame name="menu" src="frames1-menu.html"/&gt;
+    &lt;frame name="principal" src=""/&gt;
+    &lt;noframes&gt;
+	    &lt;body&gt;
+	    	&lt;p&gt;This page uses frames. The current browser you are using does not support frames.&lt;/p&gt;
+	    &lt;/body&gt;
+    &lt;/noframes&gt;
+&lt;/frameset&gt;
+&lt;/html&gt;
+</pre>
+<p>A seguir os trechos que compõem o frameset:</p>
+<pre><a target="sample" href="exemplos/frames1-menu.html">frames1-menu.html</a></pre>
+<pre class="brush:xml">
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;title&gt;Menu&lt;/title&gt;
+		&lt;meta http-equiv="content-type" content="text/html;charset=iso8859-1" /&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		&lt;a target="principal" href="frames1-principal-a.html"&gt;A&lt;/a&gt;&lt;br/&gt;
+		&lt;a target="principal" href="frames1-principal-b.html"&gt;B&lt;/a&gt;&lt;br/&gt;
+		&lt;a target="principal" href="frames1-principal-c.html"&gt;C&lt;/a&gt;&lt;br/&gt;
+		&lt;script type="text/javascript"&gt;
+			var a = document.getElementsByTagName("a");
+			a[0].onclick=function(){
+				parent.document.dadosNav.sequencia+="A";
+				parent.document.dadosNav.count++;
+			}
+			a[1].onclick=function(){
+				parent.document.dadosNav.sequencia+="B";
+				parent.document.dadosNav.count++;
+			}
+			a[2].onclick=function(){
+				parent.document.dadosNav.sequencia+="C";
+				parent.document.dadosNav.count++;
+			}
+		&lt;/script&gt;
+	&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p>Note o uso do parent pelo código do script do menu para subir para o frame
+principal e acessar o objeto customizado "dadosNav". A baixo as três páginas que
+circulamos quando usamos os links do menu:</p>
+<pre><a target="sample" href="exemplos/frames1-principal-a.html">frames1-principal-a.html</a></pre>
+<pre class="brush:xml">
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;title&gt;A&lt;/title&gt;
+		&lt;meta http-equiv="content-type" content="text/html;charset=iso8859-1" /&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		&lt;h1&gt;Página A&lt;/h1&gt;
+	&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<pre><a target="sample" href="exemplos/frames1-principal-b.html">frames1-principal-b.html</a></pre>
+<pre class="brush:xml">
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;title&gt;B&lt;/title&gt;
+		&lt;meta http-equiv="content-type" content="text/html;charset=iso8859-1" /&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		&lt;h1&gt;B&lt;/h1&gt;
+		&lt;h2&gt;Contagem de navegação: &lt;/h2&gt;
+		&lt;script type="text/javascript"&gt;
+			var h2 = document.getElementsByTagName("h2")[0];
+			//h2.innerHTML+=parent.document.dadosNav.count;
+			//pode-se navegar a partir do top.
+			h2.innerHTML+=top.document.dadosNav.count;
+		&lt;/script&gt;
+	&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<pre><a target="sample" href="exemplos/frames1-principal-c.html">frames1-principal-c.html</a></pre>
+<pre class="brush:xml">
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;title&gt;C&lt;/title&gt;
+		&lt;meta http-equiv="content-type" content="text/html;charset=iso8859-1" /&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		&lt;h1&gt;C&lt;/h1&gt;
+		&lt;h2&gt;Sequencia de navegação: &lt;/h2&gt;
+		&lt;script type="text/javascript"&gt;
+			var h2 = document.getElementsByTagName("h2")[0];
+			h2.innerHTML+=parent.document.dadosNav.sequencia;
+		&lt;/script&gt;
+	&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<h2>Templates e contrato na DOM</h2>
+<p>Esta abordagem é uma solução de criação de componentes. Para ser mais exato,
+contratos na DOM com Templates só funcionam se forem facilmente realocáveis em
+qualquer ponto do documento -- ou mesmo de outro documento.</p>
+<p>A idéia por trás disso consiste em criar trechos de código que, dada uma 
+<span class="neg">referência para um conteiner</span> deduza-se que elementos
+serão encontrados ali e <span class="neg">em que sequência</span> eles se 
+encontram.</p>
+<p>A parte da sequência é a grande força e ao mesmo tempo a fraqueza dessa 
+abordagem, pois permite trechos de documento assim:</p>
+<pre class="brush:xml">
+&lt;!-- snip --&gt;
+&lt;div id="conteiner"&gt;
+	&lt;label&gt;Nome&lt;input/&gt;&lt;/label&gt;&lt;br/&gt;
+	&lt;label&gt;Endereço&lt;input/&gt;&lt;/label&gt;&lt;br/&gt;
+	&lt;label&gt;Telefone&lt;input/&gt;&lt;/label&gt;&lt;br/&gt;
+	&lt;button&gt;Cancelar&lt;/button&gt;&lt;button&gt;Confirmar&lt;/button&gt;
+&lt;/div&gt;
+&lt;!-- snip --&gt;
+</pre>
+<p>Mas em contrapartida demandam scripts assim:</p>
+<pre class="brush:js">
+/* snip */
+function MiniCadastro(divX){
+	/* container probing */
+	var inputs = divX.getElementByTagName("input");
+	var buttons = divX.getElementsByTagName("button");
+
+	/* nomes locais */
+	var nome = inputs[0];
+	var ende = inputs[1];
+	var tele = inputs[2];
+	var canc = buttons[0];
+	var conf = buttons[1];
+	
+	/* model, funções privadas, eventos */
+	canc.onclick=function(){
+		var l = [nome,ede,tele];
+		for(var i in l)
+			l[i].value="";
+	};
+	conf.onclick=function(){
+		consolde.debug("enviando...");
+		/* etc, etc... */
+	};
+}
+/* snip e uso: */
+var cont = document.getElementById("conteiner");
+var cad = new MiniCadastro(cont);/* comportamentos realizados! */
+</pre>
+<p>Aqueles arrays são realmente o que parecem: todos os inputs e todos os botões
+que existirem sob o parâmetro recebido. Em seguida, damos para os índices nomes
+mais significativos, de modo que manipulemos estes nomes em vez dos índices. 
+Isto é um açúcar técnico para impedirmos que subárvores muito extensas nos 
+confundam com seus inúmeros índices.</p>
+<p>A sequência dos elementos determina a semântica dos nomes: o primeiro campo
+realmente é o nome, como o html sugeria. Assim, damos o nome local de "nome" 
+para o índice 0, e assim vai. Pode confiar, na lista eles virão na mesma 
+sequência em que foram declarados no html.</p>
+<p>Disto para o templating é pouco mais que um pulo. A única diferença é que 
+clonamos o elemento html detentor do contrato e vez de usa-lo diretamente e 
+ficamos assim responsáveis por readicionar o mesmo na árvore:</p>
+<pre><a target="exemplos" href="exemplos/template.html">template.html</a></pre>
+<pre class="brush:xml">
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;meta http-equiv="content-type" content="text/html;charset=iso8859-1" /&gt;
+		&lt;title&gt;Tela qualquer cosia&lt;/title&gt;
+		&lt;style type="text/css"&gt;
+			.modulo,.modulo&gt;table{
+				border: 1px groove black;
+			}
+			.modulo&gt;table{
+				width:100%;
+			}
+		&lt;/style&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		&lt;fieldset class="modulo"&gt;
+			&lt;legend&gt;Coberturas&lt;/legend&gt;
+			&lt;table&gt;
+				&lt;thead&gt;
+					&lt;tr&gt;
+						&lt;th&gt;Descrição&lt;/th&gt;
+						&lt;th&gt;Checkbox sem significado&lt;/th&gt;
+						&lt;th&gt;Combo sem motivo&lt;/th&gt;
+						&lt;th&gt;Valor&lt;/th&gt;
+						&lt;th&gt;Remover&lt;/th&gt;
+					&lt;/tr&gt;
+				&lt;/thead&gt;
+				&lt;tbody id="target"&gt;
+					&lt;!-- dynamic magic goes here --&gt;
+				&lt;/tbody&gt;
+			&lt;/table&gt;
+			&lt;button id="nova"&gt;Nova&lt;/button&gt;
+		&lt;/fieldset&gt;
+		&lt;table style="display:none;"&gt;
+			&lt;tr id="template"&gt;
+				&lt;td&gt;&lt;input/&gt;&lt;/td&gt;
+				&lt;td&gt;&lt;input type="checkbox"/&gt;&lt;/td&gt;
+				&lt;td&gt;
+					&lt;select&gt;
+						&lt;option value=""&gt;--selecione--&lt;/option&gt;
+						&lt;option value="S"&gt;Sim&lt;/option&gt;
+						&lt;option value="N"&gt;Não&lt;/option&gt;
+						&lt;option value="Q"&gt;Quem sabe&lt;/option&gt;
+						&lt;option value="I"&gt;?&lt;/option&gt;
+					&lt;/select&gt;
+				&lt;/td&gt;
+				&lt;td&gt;&lt;input/&gt;&lt;/td&gt;
+				&lt;td&gt;&lt;button&gt;X&lt;/button&gt;&lt;/td&gt;
+			&lt;/tr&gt;
+		&lt;/table&gt;
+		&lt;script type="text/javascript" src="template.js"&gt;&lt;/script&gt;
+	&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p>E o script para isto ficaria assim:</p>
+<pre><a target="exemplos" href="exemplos/template.js">template.js</a></pre>
+<pre class="brush:js">
+/* ### */
+/* classe de template. Poderia ser biblioteca, ficar em outro js, etc. */
+/* ### */
+function CoberturaModel(tr) {
+
+	tr.modelo = this;/* registrando em lugar conhecido */
+
+	/* ajuste no id do clone */
+	tr.id += new Date().getTime();
+
+	/* probing no conteiner/subarvore */
+	var inputs = tr.getElementsByTagName("input");
+	var selects = tr.getElementsByTagName("select");
+	var buttons = tr.getElementsByTagName("button");
+
+	var dsc = inputs[0];
+	var check = inputs[1];
+	var combo = selects[0];
+	var valor = inputs[2];
+	var remove = buttons[0];
+
+	/* dado de modelo */
+	this.cobertura = {
+		dsc : "",
+		val : 0,
+		chk : false,
+		cmb : ""
+	};
+
+	/* funções utilitárias */
+	this.update = function() {
+		/* TODO validações foram suprimidas */
+		this.cobertura.dsc = dsc.value;
+		this.cobertura.val = valor.value;
+		this.cobertura.chk = check.checked;
+		this.cobertura.cmb = combo.value;
+	};
+	
+	this.reset = function() {
+		dsc.value = this.cobertura.dsc;
+		valor.value = this.cobertura.val;
+		check.checked = this.cobertura.chk;
+		combo.value = this.cobertura.cmb;
+	};
+
+	/* eventos */
+	remove.onclick=function(){
+		tr.parentNode.removeChild(tr);
+		if(this.onremoveModelo)/* permitindo um observador ser notificado */
+			this.onremoveModelo();
+	};
+}
+/*
+ *###
+ * script da página. realmente uma coisa a parte, pois a classe acima pode 
+ * funcionar muito bem como biblioteca se essa tela se repetir em outro lugar.
+ *###
+ */
+
+/* referencias ao documento */
+var tgt = document.getElementById("target");
+var tpl = document.getElementById("template");
+var nww = document.getElementById("nova");
+
+/* eventos */
+nww.onclick=function(){
+	var linha = tpl.cloneNode(true);
+	tgt.appendChild(linha);
+	new CoberturaModel(linha);
+	/* não guardamos referencia, mas ele está sob tr.model */
+};
+</pre>
+<p>E assim consegue-se um elevando nível de dinamismo com relativamente pouco
+javascript, pois note que a classe é reutilizável e possui absolutamente nenhuma
+dependência de framework senão o <a href="#ref-puredom">PureDom*</a>,
+que na realidade não é framework, mas sim o ECMA-262 que todo browser de 2001
+pra cá implementa.</p>
+<h1 id="ref-titulo-referencias">Referências</h1>
+<ul>
+	<li><a id="ref-intro" href="https://developer.mozilla.org/en/a_re-introduction_to_javascript">Uma Reintrodução ao Javascript</a></li>
+	<li><a id="ref-jsref-moz" href="https://developer.mozilla.org/en/JavaScript">Guia de Referência do Javascript (Mozilla)</a></li>
+	<li><a id="ref-jsref-ms" href="http://msdn.microsoft.com/en-us/library/yek4tbz0.aspx">Guia de Referência do Javascript (Microsoft)</a></li>
+	<li><a id="ref-math-ms" href="http://msdn.microsoft.com/en-us/library/ykt08sz0%28VS.80%29.aspx">Objeto Math (Microsoft)</a></li>
+	<li><a id="ref-math-moz" href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Math">Objeto Math (Mozilla)</a></li>
+	<li><a id="ref-regex" href="http://en.wikipedia.org/wiki/Regular_expression">Introdução e histório de Expressões Regulares</a></li>
+	<li><a id="ref-date-1" href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Date">Objeto Date - Mozilla</a></li>
+	<li><a id="ref-date-2" href="http://msdn.microsoft.com/en-us/library/cd9w2te4%28VS.85%29.aspx">Objeto Date - Microsoft</a></li>
+	<li><a id="ref-date-3" href="http://tools.ietf.org/html/rfc822#section-5">Standard for ARPA Internet Text Messages - Section 5, DATE AND TIME SPECIFICATION</a></li>
+	<li><a id="ref-closure" href="http://en.wikipedia.org/wiki/Closure_%28computer_science%29">Closure</a></li>
+	<li><a id="ref-ecma-262" href="http://www.ecma-international.org/publications/standards/Ecma-262-arch.htm">ECMA-262</a></li>
+	<li><a id="ref-alpharenaming" href="http://en.wikipedia.org/wiki/AlphaRenaming">Alpha Renaming</a></li>
+	<li><a id="ref-funccall" href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function/call">Métdo call das funções</a></li>
+	<li><a id="ref-ducktyping" href="http://en.wikipedia.org/wiki/Duck_typing">Duck Typing</a></li>
+	<li><a id="ref-framework-colecoes" href="http://download.oracle.com/javase/tutorial/collections/index.html">Coleções em java</a></li>
+	<li><a id="ref-dom-0" href="http://en.wikipedia.org/wiki/Document_Object_Model#Legacy_DOM">DOM Level 0</a></li>
+	<li><a id="ref-eventos" href="http://en.wikipedia.org/wiki/DOM_events">Lista de eventos</a></li>
+	<li><a id="ref-mvc" href="http://pt.wikipedia.org/wiki/MVC">MVC</a></li>
+	<li><a id="ref-css" href="http://pt.wikipedia.org/wiki/Cascading_Style_Sheets">Cascading Style Sheet</a></li>
+	<li><a id="ref-style" href="http://www.w3schools.com/jsref/dom_obj_style.asp">Atributos sob o style</a></li>
+	<li><a id="ref-puredom" href="http://dante.dojotoolkit.org/taskspeed">PureDom* o mais rápido framework web que existe!</a></li>
+</ul>
+<h1 id="ap1">Apêndice I - miniguia para a equipe de análise</h1>
+<p>Veja o <a href="http://172.16.0.155/wordpress/?p=278">blog</a> no espaço do desenvolvedor.</p>
+<h1 id="ap2">Apêndice II - Exercício</h1>
+<h2>Produza um script chamado "exercicio.js" que faça:</h2>
+<ol>
+	<li>declare uma instância de um objeto cujos atributos sejam nome,idade e 
+	formado</li>
+	<li>no objeto declarado acima atribua a string "fulano" ao atributo nome, 
+	22 ao atributo idade e true para o atributo formado</li>
+	<li>utilizando o firebug, use o console.debug() e um laço para imprimir cada
+	atributo</li>
+	<li>crie um objeto date que represente a data "27/10/1984" e a partir deste 
+	date descobrir que dia da semana foi esta data.</li>
+</ol>
+<a style="position:fixed;top:0px;right:10px;background:white;" href="../index.html">Voltar</a>
+	</body>
+</html>

@@ -1,0 +1,76 @@
+<a href="../index.html">Voltar</a>
+		<script type="text/javascript" src="../../firebug-lite/firebug-lite.js#startOpened"></script>
+<style type="text/css">
+	fieldset,hr,input,select{
+		border: black 1px inset;
+	}
+	input,select {
+		width: 90%;
+	}
+	p {
+		width: 300px;
+		float: left;
+	}
+	fieldset fieldset {
+		width: 95%;
+	}
+	fieldset fieldset div {
+		height:300px;
+		x-overflow:none;
+		overflow:scroll;
+	}
+	fieldset fieldset div div {
+		height:auto;
+		width:95%;
+		clear:left;
+		overflow:hidden;
+	}
+</style>
+<h1>Templating</h1>
+<form onsubmit="return false" action="result.jsp">
+	<fieldset>
+		<legend>Dados do titular</legend>
+		<div>
+			<p>
+				<label>Nome</label><br/>
+				<input id="nome" name="nome"/>
+			</p>
+			<p>
+				<label>Endere�o</label><br/>
+				<input id="endereco" name="endereco"/>
+			</p>
+			<p>
+				<label>Telefone</label><br/>
+				<input id="telefone" name="telefone"/>
+			</p>
+		</div>
+		<fieldset>
+			<legend>Dependentes</legend>
+			<button id="add">Adicionar dependente</button>
+			<hr/>
+			<div id="dependentes">
+				<!-- here goes dynamic content -->
+			</div>
+		</fieldset>
+		<button id="save">Salvar</button>
+	</fieldset>
+	<input type="hidden" id="count" name="count" value="0"/>
+</form>
+<div style="visibility: hidden" id="template">
+	<p>
+		<label>Nome</label><br/>
+		<input id="_nome_"/>
+	</p>
+	<p>
+		<label>Endere�o</label><br/>
+		<input id="_endereco_"/>
+	</p>
+	<p>
+		<label>Telefone</label><br/>
+		<input id="_telefone_"/>
+	</p>
+	<p>
+		<button>Remover</button>	
+	</p>
+</div>
+<script type="text/javascript" src="index.js"></script>

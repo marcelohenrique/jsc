@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<title>Cliente - Aplicação? Alguém?</title>
+		<script type="text/javascript" src="../firebug-lite/firebug-lite.js#startOpened"></script>
+		<!-- necessário pra trazer o elemento de estilo -->
+<!--		<script type="text/javascript" src="../xhr.js"></script>-->
+<!-- hum.. o disabled não funfou -->
+<!--		<link rel='stylesheet' href='s1.css' disabled="true"/>-->
+<!--		<link rel='stylesheet' href='s2.css' disabled="true"/>-->
+<!--		<link rel='stylesheet' href='s3.css' disabled="true"/>-->
+	</head>
+	<body>
+		<a href="../index.html">Voltar</a>
+		<h1>Este não funciona no IE, u.u</h1>
+		<fieldset class="modulo">
+			<legend>Dados Segurado</legend>
+			<fieldset class="item">
+				<legend>Nome</legend>
+				<input id="nme"/>		
+			</fieldset>
+			<fieldset class="item">
+				<legend>Endereço</legend>
+				<input id="end"/>		
+			</fieldset>
+			<fieldset class="item">
+				<legend>Telefone</legend>
+				<input id="tel"/>		
+			</fieldset>
+		</fieldset>
+		<hr/>
+		<div id="vault">
+			<!-- jogaremos o css dinâmico aqui -->
+			
+		</div>
+		<div class="config">
+			<button id="b1">Estilo 1</button>
+			<button id="b2">Estilo 2</button>
+			<button id="b3">Estilo 3</button>
+		</div>
+		<script type="text/javascript">
+			/* referências */
+			var vault = document.getElementById("vault");
+			var b1=document.getElementById("b1");
+			var b2=document.getElementById("b2");
+			var b3=document.getElementById("b3");
+			var links = document.getElementsByTagName("link");/* colecao */
+					
+			b1.onclick=function(){
+				vault.innerHTML="<link rel='stylesheet' href='s1.css'/>"
+				//new XHR({url:"s1.html",dest:vault}).carregar();
+			};
+			b2.onclick=function(){
+				vault.innerHTML="<link rel='stylesheet' href='s2.css'/>"
+				//new XHR({url:"s2.html",dest:vault}).carregar();
+			};
+			b3.onclick=function(){
+				vault.innerHTML="<link rel='stylesheet' href='s3.css'/>"
+				//new XHR({url:"s3.html",dest:vault}).carregar();
+			};
+		</script>
+	</body>
+</html>

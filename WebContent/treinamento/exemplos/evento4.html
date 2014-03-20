@@ -1,0 +1,32 @@
+<html>
+   <head>
+   		<title>XHR Assíncrono</title>
+      <meta http-equiv="content-type" content="text/html;charset=iso8859-1" />
+      <script type="text/javascript" src="../../firebug-lite/firebug-lite.js#startOpened"></script>
+      <script type="text/javascript" src="../../jquery-ui-1.8.9.custom/js/jquery-1.4.4.min.js"></script>
+   </head>
+   <body>
+      <button id="greet">carregar lista</button>
+   		<ul id="retorno">
+   			<!-- dynamic data goes there -->
+   		</ul>
+      <script type="text/javascript">
+      		/* usando um pouco de jQuery. */
+			var botao = $("#greet");
+			var retorno = $("#retorno");
+      		botao.click(function(){
+      			retorno.text("");/* sanidade */
+      			console.debug("1 - Evento disparado e callback realizado");
+      			$.get("exemplo-evento4.json",function(texto){
+	      			var asdf;/* eval maligno */
+      				eval("asdf = "+texto);
+      				$.each(asdf.dados,function(i){
+      					retorno.append("<li>"+this.nome+"</li>");
+      				});
+      				console.debug("3 - Fim do callback");
+      			});
+      			console.debug("2 - Fim do evento");
+			});
+      </script>
+   </body>
+</html>

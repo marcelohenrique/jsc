@@ -1,0 +1,10 @@
+.modulo{
+	border:1px black dashed;
+	background:#EEFFEE;
+}
+.modulo>.item{
+	float:left;width:300px;
+}
+legend{
+	font: 30px cursive;
+}

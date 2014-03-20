@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Contextos de uso de frames/iframes</title>
+</head>
+<body>
+	<p id="primeiro">Use frames apenas quando não houver outras alternativas</p>
+	<hr/>
+	<p>Um uso para frames é esconder a URI atual. Mas existem aplicações mais 
+	interessantes:</p>
+	<ul>
+		<li>Wizards</li>
+		<li>Pop-Ups</li>
+		<li>Troca de dados entre subcontextos</li>
+	</ul>
+	<p>Para obter sucesso no uso de frames, algumas regras devem ser seguidas:</p>
+	<ul>
+		<li>Cada documento é o mais independente possível. Eles devem trocar 
+		mensagens entre si através de funções em escopo público do frame em 
+		questão.</li>
+		<li>Um documento jamais se refere diretamene aos id's do outro.</li>
+		<li>Todos os frames devem ter nomes.</li>
+		<li>Em aplicações completas, a navegação entre os frames deve ser feita
+		através do top.</li>
+	</ul>
+	<p>Frames, em pleno 2010, são desrecomendados principalmente por causa da 
+	ineficiência das ferramentas de debug existentes para javascript/html.</p>
+	<script type="text/javascript" src="index.js"></script>
+</body>
+</html>

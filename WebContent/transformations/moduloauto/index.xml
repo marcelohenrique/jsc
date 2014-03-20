@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="index.xsl"?>
+<modulo>
+	<id>moduloA</id>
+	<nome>Modulo Auto</nome>
+	<children>
+		<aba>
+			<id>abaCot</id>
+			<nome>Cotação</nome>
+			<children>
+				<grupador>
+					<id>grupVeic1</id>
+					<nome>Dados do Veículo cot.</nome>
+					<children>
+						<item>
+							<id>fildModelo1</id>
+							<nome>Modelo cot.</nome>
+							<valor>GOL</valor>
+						</item>
+						<item>
+							<id>fildAno1</id>
+							<nome>Ano cot.</nome>
+							<valor>2003</valor>
+						</item>
+					</children>
+				</grupador>
+				<grupador>
+					<id>grupproponente1</id>
+					<nome>Dados do Proponente cot.</nome>
+					<children>
+						<item>
+							<id>fildidade1</id>
+							<nome>Idade cot.</nome>
+						</item>
+						<item>
+							<id>fildsexo1</id>
+							<nome>Sexo cot.</nome>
+							<children>
+								<respitem>
+									<id>respfildm1</id>
+									<nome>Masculino</nome>
+									<valor>M</valor>
+								</respitem>
+								<respitem>
+									<id>respfildf1</id>
+									<nome>Feminino</nome>
+									<valor>F</valor>
+								</respitem>
+							</children>
+						</item>
+					</children>
+				</grupador>
+			</children>
+		</aba>
+		<aba>
+			<id>abaprop</id>
+			<nome>Proposta</nome>
+			<children>
+				<grupador>
+					<id>grupveic2</id>
+					<nome>Dados do Veículo</nome>
+					<children>
+						<item>
+							<id>fildmarca2</id>
+							<nome>Marca</nome>
+							<valor>Wolkswagen</valor>
+						</item>
+						<item>
+							<id>fildmodelo2</id>
+							<nome>Modelo</nome>
+							<valor>GOL</valor>
+						</item>
+						<item>
+							<id>fildano2</id>
+							<nome>Ano</nome>
+							<valor>2003</valor>
+						</item>
+						<item>
+							<id>fildcomb2</id>
+							<nome>Combsutível</nome>
+							<valor>F</valor>
+							<children>
+								<respitem>
+									<id>respfildalcool2</id>
+									<nome>Alcool</nome>
+									<valor>A</valor>
+								</respitem>
+								<respitem>
+									<id>respfildgas2</id>
+									<nome>Gasolina</nome>
+									<valor>G</valor>
+								</respitem>
+								<respitem>
+									<id>respfildflex2</id>
+									<nome>Flex</nome>
+									<valor>F</valor>
+								</respitem>
+							</children>
+						</item>
+					</children>
+				</grupador>
+				<grupador>
+					<id>dadosprop2</id>
+					<nome>Dados do Proponente</nome>
+					<children>
+						<item>
+							<id>fildnome2</id>
+							<nome>Nome</nome>
+						</item>
+						<item>
+							<id>fildidade2</id>
+							<nome>Idade</nome>
+						</item>
+						<item>
+							<id>fildsexo2</id>
+							<nome>Sexo</nome>
+							<children>
+								<respitem>
+									<id>respfildm2</id>
+									<nome>Masculino</nome>
+									<valor>M</valor>
+								</respitem>
+								<respitem>
+									<id>respfildf2</id>
+									<nome>Feminino</nome>
+									<valor>F</valor>
+								</respitem>
+							</children>
+						</item>
+					</children>
+				</grupador>
+				<grupador>
+					<id>gruppgto</id>
+					<nome>Dados Pagamento</nome>
+					<children>
+						<item>
+							<id>pgtodinheiro</id>
+							<nome>Em Dinheiro</nome>
+							<children>
+								<respitem>
+									<id>resppgtoy</id>
+									<value>S</value>
+									<nome>Sim</nome>
+								</respitem>
+								<respitem>
+									<id>resppgton</id>
+									<value>N</value>
+									<nome>Não</nome>
+								</respitem>
+							</children>
+						</item>
+					</children>
+				</grupador>
+			</children>
+		</aba>
+	</children>
+</modulo>

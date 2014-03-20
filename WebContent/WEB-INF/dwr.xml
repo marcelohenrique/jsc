@@ -1,0 +1,17 @@
+<!DOCTYPE dwr PUBLIC "-//GetAhead Limited//DTD Direct Web Remoting 3.0//EN" "http://getahead.org/dwr//dwr30.dtd">
+<dwr>
+	<allow>
+		<!-- facades -->
+		<create creator="new" javascript="Agenda">
+			<param name="class" value="misc.dwr.facade.Agenda" />
+		</create>
+		<create creator="new" javascript="Geografia">
+			<param name="class" value="misc.dwr.facade.Geografia" />
+		</create>
+		<!-- convertendo um pacote inteiro -->
+		<convert converter="bean" match="misc.dwr.bean.*" />
+		<!-- exception handling -->
+		<convert converter="exception" match="java.lang.Exception" />
+		<convert converter="bean" match="java.lang.StackTraceElement" />
+	</allow>
+</dwr>

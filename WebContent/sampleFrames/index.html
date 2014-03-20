@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<script type="text/javascript" src="../firebug-lite/firebug-lite.js#startOpened"></script>
+		<title>A arte maligna dos frames</title>
+		<style type="text/css">
+			#topo,#lado,#centro{
+				position:relative;
+				border: 0px ridge black;
+			} 
+			#lado{
+				width:200px;
+				height:400px;
+			}
+			#centro{
+				width:600px;
+				height:500px;
+				top:-400px;
+				left:200px;
+				border-width: 1px;
+				/*visibility:hidden;*/
+			}
+			#voltar{
+				position:fixed;
+				top:0px;
+				right:10px;
+			}
+			#caminho{
+				position:absolute;
+				bottom:0px;
+				left:10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="topo">
+			<a href="inicio/index.html" target="centro">Início</a>
+			&nbsp;|&nbsp;
+			<a href="wizard/index.html" target="centro">Wizard</a>
+			&nbsp;|&nbsp;
+			<a href="popuplike/index.html" target="centro">Pop-Up-Like</a>
+			&nbsp;|&nbsp;
+			<a href="subcontexto/index.jsp" target="centro">Subcontexto</a>
+			&nbsp;|&nbsp;
+			<a href="navegacao.html" target="centro">Navegação entre frames</a>
+		</div>
+		<div id="lado">
+			<p>Estes exemplos mostram como fazer para comunicar frames 
+			diferentes. O estudo direto do código fonte do exemplo é 
+			recomendado.</p>
+			<p>Num wizard devemos usar a janela pai para guardar o estado dos 
+			frames das páginas.</p>
+			<p>Em pop-ups a forma mais acertada de navegar os dados de volta
+			para o pai é pelo top, utilizando o parent apenas em último caso.</p>
+		</div>
+		<iframe id="centro" name="centro" src="inicio"></iframe>		
+		<div id="aguarde" style="visibility:hidden;position:absolute;top:33%;left:33%"><h1>Aguarde</h1></div>
+		<a id="voltar" href="../index.html">Voltar</a>
+		<div id="caminho">Início &gt; </div>
+		<script type="text/javascript" src="index.js"></script>
+	</body>
+</html>

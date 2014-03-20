@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<title>Xml Http Request</title>
+		<script type="text/javascript" src="../jquery-ui-1.8.9.custom/js/jquery-1.4.4.min.js"></script>
+		<style type="text/css">
+			pre{
+				background-color: #EEEEEE;
+			}
+		</style>
+	</head>
+	<body>
+		<a href="../index.html">Voltar</a><hr/>
+		<h1>O que é XHR</h1>
+		<p>XML HTTP Request é uma requisição HTTP similar à feita por um link ou
+		formuário, exceto que o browser não descarrega a página atual.</p>
+		<p>Estas requisições podem ser feitas através do uso de javascript.</p>
+		<h1>Exemplo</h1>
+		<p>Este <button id="but">botão</button> dispara uma requisição XHR
+		<span id="spn">...</span></p>
+		<script type="text/javascript">
+			var but = $("#but");
+			var spn = $("#spn");
+			but.click(function(){
+				$.get("trecho.html",function(ret){
+					spn.html(ret);	
+				});
+			});
+		</script>
+		<p>Javascript é mandatório para usar XHR, não há um meio declarativo de
+		realizar uma requisição desta natureza, como os links e formulários 
+		permitem para requisições regulares.</p>
+		<p>para fazer uma requisição XHR sem framework algum, você deve usar uma
+		instância de XMLHttpRequest. Em navegaores da família IE anteriores à
+		versão 7, <a href="http://en.wikipedia.org/wiki/XMLHttpRequest#Support_in_Internet_Explorer_versions_5.2C_5.5_and_6">estes passos</a> devem ser seguidos.</p>
+		<p>O uso básico segue:</p>
+		<pre>
+		
+	var xhr = new XMLHttpRequest();
+	xhr.onreadystatechange = function() {
+		if(xhr.readyState == 4) {
+			spn.innerHTML = xhr.responseText;
+		}
+	};
+	xhr.open("GET","trecho.html",true);
+	xhr.send();
+		</pre>
+		<p>Muitas bibliotecas javascript simplificam o uso do XMLHttpRequest, 
+		pois as requisições assíncronas sem perda de contexto levam a 
+		programação web para um novo patamar. O código acima reescrito para usar
+		jQuery ficaria assim:</p>
+		<pre>
+		
+	$.get("trecho.html",function(ret){
+		spn.html(ret);	
+	});
+		</pre>
+		<p>O JSC fornece um pequeno <a href="../xhr.js">componente</a> que adoça
+		o uso de XHR um pouco. É econômico em quantidade de linhas e não possui 
+		dependências externas.</p>
+		<pre>
+	new XHR({url:"trecho.html",hook:function(ret){
+		spn.innerHTML = ret;
+	}}).carregar();
+		</pre>
+		<p>Observe que nos três exemplos, o comportamento assíncrono se mantém. 
+		A arquitetura de chamadas assíncronas é aplicada porque é a que melhor 
+		reflete a realidade de uma requisição: uma chamada será feita através 
+		da internet e não sabemos realmente se haverá retorno. Com um callback 
+		podemos continuar as ações no preciso momento que houver retorno da 
+		máquina remota ou efetuar tratamentos caso não haja resposta dentro de 
+		um temp mínimo.</p>
+		<p>Evite construir sistemas que suspendam toda e qualquer execução 
+		enquanto não há retorno da chamada assíncrona; embora chadas síncronas 
+		produzam um código aparentemente mais simples, na realidade temos um
+		problema com interfaces gráficas se tornando lentas e sem resposta por 
+		períodos de tempo pouco previsíveis.</p>
+	</body>
+</html>

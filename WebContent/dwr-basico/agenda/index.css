@@ -1,0 +1,46 @@
+#voltar {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+
+#main {
+	border: 1px black double;
+	position: absolute;
+	top: 50px;
+	left: 50px;
+}
+
+#main>div {
+	float: left;
+	border: 1px black groove;
+	margin: 5px;
+}
+
+#form {
+	width: 300px;
+}
+
+#contatos {
+	width: 600px;
+	height: 480px;
+}
+
+#contatos thead {
+	height: 20px;
+}
+
+#contatos tbody {
+	border: 1px solid black;
+}
+
+#contatos tr {
+	text-align: right;
+}
+
+#contatos tr:hover{
+	background: #AAAA11;
+}
+#contatos .par {
+	background: #AAAAAA;
+}

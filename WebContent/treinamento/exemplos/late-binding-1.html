@@ -1,0 +1,36 @@
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html;charset=iso8859-1" />
+		<script type="text/javascript" src="../../firebug-lite/firebug-lite.js#startOpened"></script>
+		<!-- biblioteca externa -->
+		<script type="text/javascript" src="../../mascaras.js"></script>
+	</head>
+	<body>
+		<h1>Formulário Escroto</h1>
+		<h5>Se seu analista ainda não te pediu isso, saiba que um dia pode acontecer, ;)</h5>
+		<label for="tipo">Tipo de pessoa: </label>
+		<select id="tipo">
+			<option value="F">Física</option>
+			<option value="J">Jurídica</option>
+		</select>
+		<br />
+		<label>CPF/CNPJ: </label>
+		<input id="cpfcnpj"/>
+		<script type="text/javascript">
+			var tipo = document.getElementById("tipo");
+			tipo.selectedIndex=0;/*hard reset */
+			var cpfcnpj = new CpfMask(document.getElementById("cpfcnpj"));
+			cpfcnpj.value="";
+			/* evento do combo */
+			tipo.onchange=function(){
+				cpfcnpj.value="";
+				if(cpfcnpj.mascara)
+					cpfcnpj.mascara.desinstalar();
+				if(tipo.value==="F")
+					new CpfMask(cpfcnpj);
+				else if(tipo.value==="J")
+					new CnpjMask(cpfcnpj);
+			};
+		</script>
+	</body>
+</html>

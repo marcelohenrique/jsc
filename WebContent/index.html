@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>JSC</title>
+</head>
+<body>
+	<h1>JSC</h1>
+	<h2>Compêndio de técnicas e pequenos componentes desacopladas construídos majoritariamente com o framework <a href="http://dante.dojotoolkit.org/taskspeed/">PureDom*</a></h2>
+	<h3>Consulte o código fonte <a target="fontes" href="http://code.google.com/p/jsc/">aqui</a></h3>
+	<h4 style="text-decoration:underline;"><a id="trnmt" href="treinamento/index.html">treinamento javascript</a></h4><hr/>
+	<script type="text/javascript">
+		var t = document.getElementById("trnmt");
+		var visible = 0;
+		setInterval(function(){
+			visible = (visible + 1) % 8;
+			if(visible)
+				t.style.visibility="visible";
+			else
+				t.style.visibility="hidden";
+		},300);
+	</script>
+	<a href="mascaras/index.html">Teste com máscaras</a><hr/>
+	<a href="tabelas/index.jsp">Teste com tabela</a><hr/>
+	<a href="xhr/index.html">Usando XHR</a><hr/>
+	<a href="sampleFrames/index.html">Como os frames podem te ajudar</a><hr/>
+	<a href="dwr-basico/index.html">DWR b&aacute;sico</a><hr/>
+	<a href="jquery-ui-basico/index.jsp">jquery-ui básico</a><hr/>
+	<a href="scriptremoto/a.html">carregando dinamicamente e separadamente a tela e os eventos</a><hr/>
+	<a href="runner/runner.html">brincando com pseudothreads</a><hr/>
+	<a href="transformations/index.html">um pouco de XSLT</a><hr/>
+	<a href="splice/splice.html">manipulando listas</a><hr/>
+	<a href="templating/index.html">uso de templates</a><hr/>
+	<a href="canvas/index.html">experimentos e exemplos de canvas </a><hr/>
+	<a href="estilo/estilando.html">manipulação das definições css </a><hr/>
+	<a href="misc/index.html">experimentos variados (miscel&acirc;nia)</a><hr/>
+	<!-- ^_^ -->
+	<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+		<input type="hidden" name="cmd" value="_s-xclick">
+		<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
+		">
+		<input type="image" src="https://www.paypalobjects.com/pt_BR/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - A maneira mais fácil e segura de efetuar pagamentos online!">
+		<img alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1">
+	</form>
+	<!-- ^_^ -->	
+</body>
+</html>

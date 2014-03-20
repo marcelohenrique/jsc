@@ -1,0 +1,9 @@
+#pop {
+	visibility: hidden;
+	position: absolute;
+	top: 10px;
+	left: 30px;
+	width: 500px;
+	height: 250px;
+	background-color: gray;
+}

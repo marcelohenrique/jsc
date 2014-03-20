@@ -1,0 +1,21 @@
+<html>
+	<head>
+		<title>Eval Evil</title>
+      <script type="text/javascript" src="../../firebug-lite/firebug-lite.js#startOpened"></script>
+	</head>
+	<body>
+		<label>Hmmm...</label>
+		<input value=""/>
+		<script type="text/javascript">
+			var inp = document.getElementsByTagName("input")[0];
+			console.debug(inp);
+			var x = 2;
+			eval("var x = 3");/*adivinhe qual x vai valer...*/
+			inp.value=x;
+			console.debug(inp.value);
+			/*faça um erro no eval e veja o que acontece:*/
+			eval("vat y = inp.value");
+			console.debug("boom! você jamais me verá!");
+		</script>
+	</body>
+</html>

@@ -1,0 +1,53 @@
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html;charset=iso8859-1" />
+		<script type="text/javascript" src="../../firebug-lite/firebug-lite.js#startOpened"></script>
+		<title>Tela qualquer cosia</title>
+		<style type="text/css">
+			.modulo,.modulo>table{
+				border: 1px groove black;
+			}
+			.modulo>table,.modulo input{
+				width:100%;
+			}
+		</style>
+	</head>
+	<body>
+		<fieldset class="modulo">
+			<legend>Coberturas</legend>
+			<table>
+				<thead>
+					<tr>
+						<th>Descrição</th>
+						<th>Checkbox sem significado</th>
+						<th>Combo sem motivo</th>
+						<th>Valor</th>
+						<th>Remover</th>
+					</tr>
+				</thead>
+				<tbody id="target">
+					<!-- dynamic magic goes here -->
+				</tbody>
+			</table>
+			<button id="nova">Nova</button>
+		</fieldset>
+		<table style="display:none">
+			<tr id="template">
+				<td><input/></td>
+				<td><input type="checkbox"/></td>
+				<td>
+					<select>
+						<option value="">--selecione--</option>
+						<option value="S">Sim</option>
+						<option value="N">Não</option>
+						<option value="Q">Quem sabe</option>
+						<option value="I">?</option>
+					</select>
+				</td>
+				<td><input/></td>
+				<td><button>X</button></td>
+			</tr>
+		</table>
+		<script type="text/javascript" src="template.js"></script>
+	</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<title>grupos</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+		<meta name="generator" content="Geany 0.14" />
+		<script type="text/javascript" src="../firebug-lite/firebug-lite.js#startOpened"></script>
+		
+		<script type="text/javascript" src="grupos.js"></script>
+		<script type="text/javascript">
+			function load(){
+				var origem = document.getElementById("recursosDisp")
+				var destino = document.getElementById("recursosSel")
+				var adicionar = document.getElementById("adiciona")
+				var remover = document.getElementById("remove")
+				
+				new SelectGrupos(origem,destino,adicionar)
+				new SelectGrupos(destino,origem,remover)
+			}
+		</script>
+	
+	</head>
+	<body onload="load()">
+		<a href="index.html">Voltar</a>
+		<hr/>
+		<div>
+			<div style="float:left;">
+				<label>Recursos</label><br/>
+				<select id="recursosDisp" multiple>
+					<optgroup label="Orientadores">
+						<option>Fulano de Tal</option>
+						<option>Beltrano daculah</option>				
+						<option>Sicrano issoaih</option>
+						<option>Francisco Joseh da Silva</option>
+						<option>Pessoa</option>						
+					</optgroup>
+					<optgroup label="Bolsistas">
+						<option>Aluno bom</option>
+						<option>Aluno ruim</option>				
+						<option>Aluno otimo</option>
+						<option>Aluno pessimo</option>
+						<option>Aluna!!!!</option>						
+					</optgroup>
+					<optgroup label="M&aacute;quina">
+						<option>Celeron II</option>
+						<option>Pentium III</option>				
+						<option>K6 II</option>
+						<option>i486 Cyrix</option>
+						<option>Athlon</option>
+						<option>Semprom</option>
+						<option>Via C3</option>
+						<option>AMD Geode</option>				
+						<option>Ultra Spark 400</option>						
+					</optgroup>
+				</select>
+				<button id="adiciona">Adicionar</button>
+			</div>
+			<div style="float:left;">
+				<label>Equipes</label><br/>
+				<select id="recursosSel" multiple>
+					<optgroup id="orientadoresSel" label="Orientadores">						
+					</optgroup>
+					<optgroup id="bolsistasSel" label="Bolsistas">						
+					</optgroup>				
+					<optgroup id="maquinasSel" label="M&aacute;quina">
+					</optgroup>
+				</select>
+				<button id="remove">Remover</button>				
+			</div>
+		</div>
+	</body>
+</html>

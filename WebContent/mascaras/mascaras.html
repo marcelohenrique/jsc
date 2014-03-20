@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<title>Teste dos componentes</title>
+		<script type="text/javascript" src="../firebug-lite/firebug-lite.js#startOpened"></script>
+		<!-- estilo da pagina -->
+		<link rel="stylesheet" href="mascaras.css"></link>
+		<!-- Biblioteca de componentes -->
+		<script type="text/javascript" src="../mascaras.js"></script>
+	</head>
+	<body>
+		<h1>Teste das m&aacute;scaras</h1>
+		<div class="teste">
+			<label for="cep">CEP:</label><input id="cep" /><br />
+			<label for="telefone">Telefone:</label><input id="telefone" /><br />
+			<label for="cpf">CPF:</label><input id="cpf" />&nbsp;<span id="valida1"></span><br />
+			<label for="cnpj">CNPJ:</label><input id="cnpj" />&nbsp;<span id="valida2"></span><br />
+			<label for="numeros">Numeros:</label><input id="numeros" /><br />
+			<label for="leet">Leet:</label><input id="leet" /><br />
+			<label for="valor">Valor:</label><input id="valor" /><br />
+			<label for="data">Data:</label><input id="data" /><span id="valida3"></span><br />
+			<label for="placa">Placa Veículo:</label><input id="placa" /><br />
+			<label for="caixa">Caixa Alta:</label><input id="caixa" /><br />
+			<label for="alfnu">Alfa-Numérico:</label><input id="alfnu" /><br />
+<!--			<label for="ip">IP:</label><input id="ip" /><br />-->
+			<button id="clear">Clear</button>
+		</div>
+		<a href="index.html">Voltar</a>
+		<div id="dbg" class="disbug"></div>
+		<script type="text/javascript">
+			console.debug("Olá, como vai você?");
+			console.debug("As máscaras trabalham, assim como os outros scripts aqui colocados, com referências ao elementos do documento.");
+			console.debug("Id's são importantes, mas apenas para recuperar os elementos, se você olhar o script irá ver isso.");
+			console.debug("Trabalhar com referências é mais produtivo e resulta em código bem mais limpo!");
+			console.debug("Trabalhe com referências você também, ;)")
+			console.debug("Ah, e criar uma máscara é facil, se você desejar, por exemplo, uma máscara de cep:");
+			console.debug('var cep = new CepMask(doccument.getElementById("cep"));');
+			console.debug("e pronto, o input irá filtrar a digitação e copy/paste com a máscara de cep.");
+			
+			//campos
+			var cep = 		new CepMask(document.getElementById("cep"));
+			var telefone = 	new TelefoneMask(document.getElementById("telefone"));
+			var cpf = 		new CpfMask(document.getElementById("cpf"));
+			var cnpj = 		new CnpjMask(document.getElementById("cnpj"));
+			var numeros = 	new NumberMask(document.getElementById("numeros"));
+			var leet = 		new LeetMask(document.getElementById("leet"));
+			var valor = 	new ValorMask(document.getElementById("valor"));
+			var data = 		new DataMask(document.getElementById("data"));
+			var placa = 	new PlacaMask(document.getElementById("placa"));
+			var caixa = 	new CaixaAltaMask(document.getElementById("caixa"));
+			var alfnu = 	new AlfaNumericoMask(document.getElementById("alfnu"));
+			//var ip = new IpMask(document.getElementById("ip"));
+			
+			//botão
+			var clear = document.getElementById("clear");
+	
+			//áreas de validação
+			var valida1 = document.getElementById("valida1");
+			var valida2 = document.getElementById("valida2");
+			var valida3 = document.getElementById("valida3");
+			
+			var campos = [ cep, telefone, cpf, cnpj, numeros, leet, valor,//
+            data, placa, caixa, alfnu ];
+			//funções
+			clear.onclick = function() {
+				console.debug("Este handler de evento é 100% DOM L0 e crossbrowser!");
+				for(var i in campos)
+					campos[i].value="";
+			};
+		
+			//eventos
+			cpf.onblur = function() {
+				try {
+					cpf.mascara.validar();
+					valida1.innerHTML = "valido";
+				} catch (e) {
+					valida1.innerHTML = e.message;
+				}
+			};
+		
+			data.onblur = function() {
+				try {
+					data.mascara.validar();
+					valida3.innerHTML = "valido";
+				} catch (e) {
+					valida3.innerHTML = e.message;
+				}
+			}
+		</script>
+	</body>
+</html>

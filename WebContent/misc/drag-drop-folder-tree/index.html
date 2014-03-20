@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<script type="text/javascript" src="js/ajax.js"></script>
+		<!-- IMPORTANT! INCLUDE THE context-menu.js FILE BEFORE drag-drop-folder-tree.js -->
+		<script type="text/javascript" src="js/context-menu.js"></script>
+		<script type="text/javascript" src="js/drag-drop-folder-tree.js"></script>
+		
+		<link rel="stylesheet" href="css/drag-drop-folder-tree.css" type="text/css"></link>
+		<link rel="stylesheet" href="css/context-menu.css" type="text/css"></link>
+		
+		<title>Test with dynamic magic tree</title>
+	</head>
+	<body>
+		<h1><a href="http://www.dhtmlgoodies.com" target="_blank">http://www.dhtmlgoodies.com</a></h1>
+		<button>Create Tree #1</button>
+		<button>Create Tree #2</button>
+		<hr/>
+		<ul id="dynamic" class="dhtmlgoodies_tree">
+			<!-- click buttons to add samples -->
+		</ul>
+		<script type="text/javascript">
+			//doc binding
+			var root = document.getElementById("dynamic");
+			var buttons = document.getElementsByTagName("button");
+			// local naming
+			var b1 = buttons[0];
+			var b2 = buttons[1];
+			//model data
+			var treeObj;
+			// utils
+			function init(){
+				treeObj = new JSDragDropTree();
+				treeObj.setTreeId('dynamic');//it would receive some reference
+				treeObj.initTree();
+			}
+			//event bindings
+			b1.onclick=function(){
+				root.innerHTML="<li id='node1'><a noDrag='true' href='#'>sample1</a></li>";
+				init();
+			};
+			b2.onclick=function(){
+				root.innerHTML="<li id='node1'><a noDrag='true' href='#'>sample2</a><ul><li id='node11'><a href='javascript:alert(\"Hello!\")'>child</a></li></ul></li>";
+				init();
+			};
+			
+		</script>
+	</body>
+</html>

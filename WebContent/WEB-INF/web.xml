@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="2.5">
+	<display-name>JSComponents</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+	<servlet>
+		<description></description>
+		<display-name>BancoLoader</display-name>
+		<servlet-name>BancoLoader</servlet-name>
+		<servlet-class>teste.jscomponents.BancoLoader</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BancoLoader</servlet-name>
+		<url-pattern>/BancoLoader</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description>servlet de testes para o componente xhr</description>
+		<display-name>XHRServlet</display-name>
+		<servlet-name>XHRServlet</servlet-name>
+		<servlet-class>teste.jscomponents.XHRServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>XHRServlet</servlet-name>
+		<url-pattern>/xhr/sample1/XHRServlet</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description></description>
+		<display-name>DwrServlet</display-name>
+		<servlet-name>DwrServlet</servlet-name>
+		<servlet-class>org.directwebremoting.servlet.DwrServlet</servlet-class>
+		<init-param>
+			<description></description>
+			<param-name>debug</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DwrServlet</servlet-name>
+		<url-pattern>/dwr/*</url-pattern>
+	</servlet-mapping>
+	<resource-ref>
+		<description>DataSource do Mysql</description>
+		<res-ref-name>jdbc/jsc-ds</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+		<res-sharing-scope>Shareable</res-sharing-scope>
+	</resource-ref>
+</web-app>

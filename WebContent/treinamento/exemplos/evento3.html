@@ -1,0 +1,43 @@
+<html>
+   <head>
+      <meta http-equiv="content-type" content="text/html;charset=iso8859-1" />
+      <script type="text/javascript" src="../../firebug-lite/firebug-lite.js#startOpened"></script>
+   		<title>DOM 2</title>
+   </head>
+   <body>
+   	<h1>O attachEvent funciona no IE e não funciona nos outros.</h1>
+   	<h1>O addEventListener funciona nos outros e não funciona no IE</h1>
+      <button id="greet1">Olá com addEventListener</button>
+      <button id="greet2">Olá com attachEvent</button>
+      
+      <script type="text/javascript">
+			/* eventos DOM level 2 */
+			try{
+				var botao = document.getElementById("greet1");
+	      		botao.addEventListener("click",function(){
+					alert("Olá!");
+				},true);
+	      		botao.addEventListener("click",function(){
+					console.debug("podemos attachar vários eventos agora");
+				},true);
+	      			
+			}catch(e){
+				console.debug("hum... estamos no IE");
+			}
+			
+			try{
+				var botao2 = document.getElementById("greet2");
+	      		botao2.attachEvent("onclick",function(){
+					alert("Olá!");
+				});
+	      		botao2.attachEvent("onclick",function(){
+					console.debug("podemos attachar vários eventos agora");
+				});
+	      			
+			}catch(e){
+				console.debug("hum... estamos nos outros browsers");
+			}
+			console.debug("nota: mesmo no escopo do try, botao e botao2 serão visíveis no contexto global.")
+      </script>
+   </body>
+</html>
